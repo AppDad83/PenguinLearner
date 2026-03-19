@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,7 +37,7 @@ fun GrammarScreen(
 ) {
     val scope = rememberCoroutineScope()
     var exercises by remember { mutableStateOf<List<GrammarExercise>>(emptyList()) }
-    var currentIndex by remember { mutableIntStateOf(0) }
+    var currentIndex by rememberSaveable { mutableIntStateOf(0) }
     var selectedWords by remember { mutableStateOf<Set<String>>(emptySet()) }
     var showResults by remember { mutableStateOf(false) }
     val completedIds by progressRepository.completedGrammarIds.collectAsState(initial = emptySet())

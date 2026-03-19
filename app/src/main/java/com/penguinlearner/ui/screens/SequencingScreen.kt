@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DragHandle
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,7 +45,7 @@ fun SequencingScreen(
 ) {
     val scope = rememberCoroutineScope()
     var exercises by remember { mutableStateOf<List<SequencingExercise>>(emptyList()) }
-    var currentIndex by remember { mutableIntStateOf(0) }
+    var currentIndex by rememberSaveable { mutableIntStateOf(0) }
     var currentOrder by remember { mutableStateOf<List<SequenceEvent>>(emptyList()) }
     var showResults by remember { mutableStateOf(false) }
     var isCorrect by remember { mutableStateOf(false) }
