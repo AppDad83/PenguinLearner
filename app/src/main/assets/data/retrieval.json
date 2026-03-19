@@ -127,6 +127,94 @@
       "correctAnswerIndex": 1,
       "explanation": "Mr. Popper decides to join Admiral Drake's expedition and go to the North Pole with his beloved penguins.",
       "chapter": "Chapter 20"
+    },
+    {
+      "id": 17,
+      "question": "What is the name of the street where the Poppers live?",
+      "options": ["Elm Street", "Proudfoot Avenue", "Main Street", "South Pole Road"],
+      "correctAnswerIndex": 1,
+      "explanation": "The Popper family lives at 432 Proudfoot Avenue in the town of Stillwater.",
+      "chapter": "Chapter 1"
+    },
+    {
+      "id": 18,
+      "question": "What is the title of the book Mr. Popper reads in Chapter II?",
+      "options": ["Arctic Adventures", "Antarctic Adventures", "The Life of Penguins", "Admiral Drake's Journey"],
+      "correctAnswerIndex": 1,
+      "explanation": "Mr. Popper reads 'Antarctic Adventures' to learn more about the polar regions he loves so much.",
+      "chapter": "Chapter 2"
+    },
+    {
+      "id": 19,
+      "question": "What did Captain Cook eat in the dining room that made Mrs. Popper angry?",
+      "options": ["Beans", "Goldfish", "Shrimps", "Apples"],
+      "correctAnswerIndex": 1,
+      "explanation": "Captain Cook ate the goldfish from the bowl in the dining room, which upset Mrs. Popper.",
+      "chapter": "Chapter 4"
+    },
+    {
+      "id": 20,
+      "question": "How many air holes did the service man drill in the refrigerator door?",
+      "options": ["One", "Three", "Five", "Ten"],
+      "correctAnswerIndex": 2,
+      "explanation": "The service man drilled five air holes in the refrigerator door so Captain Cook could breathe while sleeping inside.",
+      "chapter": "Chapter 5"
+    },
+    {
+      "id": 21,
+      "question": "What did the policeman first think Captain Cook was?",
+      "options": ["A lion", "A giant parrot", "A goose", "A dog"],
+      "correctAnswerIndex": 1,
+      "explanation": "When the policeman first saw Captain Cook, he thought the penguin was a giant parrot because he had never seen a penguin before.",
+      "chapter": "Chapter 6"
+    },
+    {
+      "id": 22,
+      "question": "What did Mr. Popper use as a leash for Captain Cook?",
+      "options": ["A leather strap", "A chain", "A clothesline", "A ribbon"],
+      "correctAnswerIndex": 2,
+      "explanation": "Mr. Popper used a clothesline as a leash when taking Captain Cook for walks around town.",
+      "chapter": "Chapter 8"
+    },
+    {
+      "id": 23,
+      "question": "What was Captain Cook's temperature when he was very sick?",
+      "options": ["98 degrees", "100 degrees", "104 degrees", "108 degrees"],
+      "correctAnswerIndex": 2,
+      "explanation": "When Captain Cook was very ill, his temperature rose to 104 degrees, which worried the Poppers greatly.",
+      "chapter": "Chapter 10"
+    },
+    {
+      "id": 24,
+      "question": "Which two penguins usually get into a fight with each other?",
+      "options": ["Captain Cook and Greta", "Nelson and Columbus", "Scott and Magellan", "Janie and Bill"],
+      "correctAnswerIndex": 1,
+      "explanation": "Nelson and Columbus were always fighting with each other, which caused problems during their performances.",
+      "chapter": "Chapter 13"
+    },
+    {
+      "id": 25,
+      "question": "How much money per week did the penguins earn on their contract?",
+      "options": ["$50", "$500", "$1,000", "$5,000"],
+      "correctAnswerIndex": 3,
+      "explanation": "The penguins earned $5,000 per week on their theater contract, which was a huge amount of money.",
+      "chapter": "Chapter 15"
+    },
+    {
+      "id": 26,
+      "question": "Why was Mr. Popper arrested in New York?",
+      "options": ["For not having a license", "For going to the wrong theater", "For stealing fish", "For walking on the roof"],
+      "correctAnswerIndex": 1,
+      "explanation": "Mr. Popper was arrested because he accidentally went to the wrong theater (the Regal) instead of the Royal.",
+      "chapter": "Chapter 19"
+    },
+    {
+      "id": 27,
+      "question": "Who offered Mr. Popper a contract to put the penguins in movies?",
+      "options": ["Admiral Drake", "Mr. Greenbaum", "Mr. Klein", "The Mayor"],
+      "correctAnswerIndex": 2,
+      "explanation": "Mr. Klein, a Hollywood movie producer, offered the Poppers a contract to put their penguins in films.",
+      "chapter": "Chapter 19"
     }
   ]
 }
