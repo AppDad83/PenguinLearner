@@ -66,5 +66,11 @@ fun PenguinNavHost(
                 progressRepository = progressRepository
             )
         }
+
+        composable(BottomNavItem.Chapters.route) {
+            ChaptersScreen(
+                contentRepository = contentRepository
+            )
+        }
     }
 }
