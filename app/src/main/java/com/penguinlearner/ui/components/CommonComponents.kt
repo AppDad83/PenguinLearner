@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.NavigateBefore
 import androidx.compose.material.icons.filled.NavigateNext
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.outlined.BorderColor
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -321,6 +322,31 @@ fun HighlighterToggle(
         ),
         modifier = modifier
     )
+}
+
+@Composable
+fun ClearHighlightsButton(
+    hasHighlights: Boolean,
+    onClear: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TextButton(
+        onClick = onClear,
+        enabled = hasHighlights,
+        modifier = modifier,
+        colors = ButtonDefaults.textButtonColors(
+            contentColor = WrongRed,
+            disabledContentColor = PenguinGray
+        )
+    ) {
+        Icon(
+            imageVector = Icons.Default.Clear,
+            contentDescription = null,
+            modifier = Modifier.size(18.dp)
+        )
+        Spacer(modifier = Modifier.width(4.dp))
+        Text("Löschen")
+    }
 }
 
 @Composable

@@ -121,10 +121,24 @@ fun ExplanationScreen(
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.primary
                 )
-                HighlighterToggle(
-                    isEnabled = highlightEnabled,
-                    onToggle = { highlightEnabled = !highlightEnabled }
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    val hasHighlights = passageHighlights.isNotEmpty() ||
+                                       questionHighlights.isNotEmpty() ||
+                                       hintsHighlights.values.any { it.isNotEmpty() } ||
+                                       modelAnswerHighlights.isNotEmpty()
+                    if (highlightEnabled) {
+                        ClearHighlightsButton(
+                            hasHighlights = hasHighlights,
+                            onClear = { clearHighlights() }
+                        )
+                    }
+                    HighlighterToggle(
+                        isEnabled = highlightEnabled,
+                        onToggle = { highlightEnabled = !highlightEnabled }
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(8.dp))
