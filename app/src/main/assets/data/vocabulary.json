@@ -1,0 +1,194 @@
+{
+  "vocabulary": [
+    {
+      "id": 1,
+      "englishWord": "curious",
+      "germanTranslation": "neugierig",
+      "definition": "Eager to learn or know something; having a strong desire to investigate.",
+      "exampleSentence": "Mr. Popper was curious about the penguins in Antarctica.",
+      "blankSentence": "Mr. Popper was ___ about the penguins in Antarctica.",
+      "answer": "curious",
+      "chapter": "Chapter 1"
+    },
+    {
+      "id": 2,
+      "englishWord": "waddle",
+      "germanTranslation": "watscheln",
+      "definition": "To walk with short steps, swaying from side to side like a duck or penguin.",
+      "exampleSentence": "Captain Cook would waddle across the kitchen floor.",
+      "blankSentence": "Captain Cook would ___ across the kitchen floor.",
+      "answer": "waddle",
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 3,
+      "englishWord": "expedition",
+      "germanTranslation": "Expedition",
+      "definition": "A journey undertaken by a group of people with a particular purpose, especially exploration.",
+      "exampleSentence": "Admiral Drake had gone on an expedition to the South Pole.",
+      "blankSentence": "Admiral Drake had gone on an ___ to the South Pole.",
+      "answer": "expedition",
+      "chapter": "Chapter 1"
+    },
+    {
+      "id": 4,
+      "englishWord": "shivering",
+      "germanTranslation": "zitternd",
+      "definition": "Shaking slightly because of cold, fear, or excitement.",
+      "exampleSentence": "The penguin was shivering when he first arrived at the Popper house.",
+      "blankSentence": "The penguin was ___ when he first arrived at the Popper house.",
+      "answer": "shivering",
+      "chapter": "Chapter 2"
+    },
+    {
+      "id": 5,
+      "englishWord": "aquarium",
+      "germanTranslation": "Aquarium",
+      "definition": "A building or tank where fish and other water creatures are kept for display.",
+      "exampleSentence": "Mr. Popper visited the aquarium to learn more about penguins.",
+      "blankSentence": "Mr. Popper visited the ___ to learn more about penguins.",
+      "answer": "aquarium",
+      "chapter": "Chapter 6"
+    },
+    {
+      "id": 6,
+      "englishWord": "performer",
+      "germanTranslation": "Künstler/Darsteller",
+      "definition": "A person who entertains an audience, especially by acting, singing, or dancing.",
+      "exampleSentence": "Captain Cook became a talented performer on stage.",
+      "blankSentence": "Captain Cook became a talented ___ on stage.",
+      "answer": "performer",
+      "chapter": "Chapter 14"
+    },
+    {
+      "id": 7,
+      "englishWord": "Antarctica",
+      "germanTranslation": "Antarktis",
+      "definition": "The continent around the South Pole, covered in ice and snow.",
+      "exampleSentence": "Penguins live naturally in Antarctica.",
+      "blankSentence": "Penguins live naturally in ___.",
+      "answer": "Antarctica",
+      "chapter": "Chapter 1"
+    },
+    {
+      "id": 8,
+      "englishWord": "refrigerator",
+      "germanTranslation": "Kühlschrank",
+      "definition": "An appliance that keeps food and drinks cold.",
+      "exampleSentence": "Mr. Popper kept the refrigerator door open to keep Captain Cook cool.",
+      "blankSentence": "Mr. Popper kept the ___ door open to keep Captain Cook cool.",
+      "answer": "refrigerator",
+      "chapter": "Chapter 4"
+    },
+    {
+      "id": 9,
+      "englishWord": "mischievous",
+      "germanTranslation": "schelmisch",
+      "definition": "Playfully causing trouble; naughty in a harmless way.",
+      "exampleSentence": "The mischievous penguins knocked over the furniture.",
+      "blankSentence": "The ___ penguins knocked over the furniture.",
+      "answer": "mischievous",
+      "chapter": "Chapter 8"
+    },
+    {
+      "id": 10,
+      "englishWord": "astonished",
+      "germanTranslation": "erstaunt",
+      "definition": "Greatly surprised or impressed; amazed.",
+      "exampleSentence": "Mrs. Popper was astonished to see a penguin in her living room.",
+      "blankSentence": "Mrs. Popper was ___ to see a penguin in her living room.",
+      "answer": "astonished",
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 11,
+      "englishWord": "tuxedo",
+      "germanTranslation": "Smoking/Anzug",
+      "definition": "A formal black suit worn by men, also describes penguin markings.",
+      "exampleSentence": "The penguin looked like he was wearing a tuxedo.",
+      "blankSentence": "The penguin looked like he was wearing a ___.",
+      "answer": "tuxedo",
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 12,
+      "englishWord": "audience",
+      "germanTranslation": "Publikum",
+      "definition": "The people who watch or listen to a performance.",
+      "exampleSentence": "The audience cheered when the penguins performed their tricks.",
+      "blankSentence": "The ___ cheered when the penguins performed their tricks.",
+      "answer": "audience",
+      "chapter": "Chapter 15"
+    },
+    {
+      "id": 13,
+      "englishWord": "spectacle",
+      "germanTranslation": "Spektakel/Anblick",
+      "definition": "Something amazing or exciting to watch.",
+      "exampleSentence": "Captain Cook found this spectacle very interesting.",
+      "blankSentence": "The penguin show was a wonderful ___ for the audience.",
+      "answer": "spectacle",
+      "chapter": "Chapter 9"
+    },
+    {
+      "id": 14,
+      "englishWord": "nuisance",
+      "germanTranslation": "Plage/Ärgernis",
+      "definition": "Something or someone that is annoying.",
+      "exampleSentence": "Mr. Popper never liked to be a nuisance to anyone.",
+      "blankSentence": "A wild penguin in a house can be quite a ___.",
+      "answer": "nuisance",
+      "chapter": "Chapter 17"
+    },
+    {
+      "id": 15,
+      "englishWord": "debris",
+      "germanTranslation": "Trümmer/Überreste",
+      "definition": "Small broken pieces left after damage.",
+      "exampleSentence": "Captain Cook jumped over the packing debris.",
+      "blankSentence": "After opening the large box, the floor was covered in ___.",
+      "answer": "debris",
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 16,
+      "englishWord": "irritable",
+      "germanTranslation": "reizbar",
+      "definition": "Easily annoyed or in a bad mood.",
+      "exampleSentence": "The penguins were growing irritable in the heat.",
+      "blankSentence": "When it is too hot, the penguins become ___.",
+      "answer": "irritable",
+      "chapter": "Chapter 18"
+    },
+    {
+      "id": 17,
+      "englishWord": "tobogganed",
+      "germanTranslation": "gerodelt/gerutscht",
+      "definition": "Slid downhill on a stomach or sled.",
+      "exampleSentence": "The penguin tobogganed down on its white stomach.",
+      "blankSentence": "The penguins ___ down the icy stairs.",
+      "answer": "tobogganed",
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 18,
+      "englishWord": "sleek",
+      "germanTranslation": "glatt/glänzend",
+      "definition": "Smooth and shiny.",
+      "exampleSentence": "Captain Cook leaned his sleek black head back.",
+      "blankSentence": "A healthy penguin has ___ feathers.",
+      "answer": "sleek",
+      "chapter": "Chapter 4"
+    },
+    {
+      "id": 19,
+      "englishWord": "inquisitive",
+      "germanTranslation": "wissbegierig/neugierig",
+      "definition": "Very curious and wanting to learn more.",
+      "exampleSentence": "The inquisitive bird kept reaching over to explore.",
+      "blankSentence": "Captain Cook is a very ___ bird who likes to explore.",
+      "answer": "inquisitive",
+      "chapter": "Chapter 3"
+    }
+  ]
+}

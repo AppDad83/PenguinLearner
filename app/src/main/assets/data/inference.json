@@ -1,0 +1,76 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "passage": "Mr. Popper spent most of his evenings listening to the radio, hoping to hear news about polar expeditions. He had never been to school much, but he knew more about the North and South Poles than anyone in Stillwater.",
+      "question": "What can you infer about Mr. Popper's interests and how he gained his knowledge?",
+      "modelAnswer": "Mr. Popper is very interested in polar regions and exploration. Even though he didn't have much formal education, he taught himself about the poles by listening to the radio and learning on his own. This shows he is curious and self-motivated to learn about things he loves.",
+      "hints": ["Think about how someone learns without going to school.", "What does his evening activity tell you about him?"],
+      "chapter": "Chapter 1"
+    },
+    {
+      "id": 2,
+      "passage": "When Captain Cook first arrived, he wouldn't eat anything. Mr. Popper tried bread, milk, and crackers, but the penguin just looked at them and turned away. Then Mr. Popper had an idea and went to the fish market.",
+      "question": "What can you infer about what penguins eat and how Mr. Popper figured it out?",
+      "modelAnswer": "Penguins eat fish because they live near the ocean. Mr. Popper figured this out by thinking about where penguins come from and what food would be available to them in Antarctica. He was observant enough to notice that Captain Cook wasn't interested in regular food and smart enough to try something different.",
+      "hints": ["Where do penguins live in the wild?", "What animals live in the ocean near Antarctica?"],
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 3,
+      "passage": "Mrs. Popper sighed when she saw the ice forming in the living room. The electricity bills were getting higher and higher. But when she looked at Captain Cook playing happily, she couldn't help but smile.",
+      "question": "What can you infer about Mrs. Popper's feelings about having a penguin?",
+      "modelAnswer": "Mrs. Popper has mixed feelings about Captain Cook. On one hand, she's worried about the practical problems like the cold house and expensive electricity bills. On the other hand, she loves the penguin and enjoys seeing him happy, which is why she smiles despite the difficulties.",
+      "hints": ["Think about what makes her sigh versus what makes her smile.", "Can someone feel two different emotions at once?"],
+      "chapter": "Chapter 5"
+    },
+    {
+      "id": 4,
+      "passage": "The serviceman looked at the inside of the refrigerator, then at the holes Mr. Popper had made in it, then at the penguin standing next to him. He closed his toolbox and said he had never seen anything quite like this before.",
+      "question": "What can you infer about what the serviceman is thinking?",
+      "modelAnswer": "The serviceman is surprised and confused by the unusual situation. He probably realizes that Mr. Popper purposely modified the refrigerator for the penguin, which is very strange and unexpected. He likely doesn't know how to fix something that was changed on purpose for such an unusual reason.",
+      "hints": ["How would you feel if you saw something you'd never seen before at work?", "What does 'never seen anything quite like this' suggest?"],
+      "chapter": "Chapter 4"
+    },
+    {
+      "id": 5,
+      "passage": "She was not at all a disagreeable woman, but she sometimes got rather cross when she was worried about money.",
+      "question": "How does Mrs. Popper feel about the future?",
+      "modelAnswer": "Mrs. Popper feels anxious and worried. The text says she gets 'cross when she was worried about money,' which shows she is stressed about having enough to live on during the winter when Mr. Popper cannot work as a house painter.",
+      "hints": ["Look for the word 'worried' and her reaction 'cross'.", "Why might money be a concern?"],
+      "chapter": "Chapter 2"
+    },
+    {
+      "id": 6,
+      "passage": "Mr. Popper did not sleep very well that night. He did not see how he could possibly wait to find out what the Admiral meant.",
+      "question": "How does Mr. Popper feel here?",
+      "modelAnswer": "Mr. Popper is extremely excited and curious. He cannot sleep because he is thinking about the 'surprise' Admiral Drake promised him. The anticipation keeps him awake because he desperately wants to know what the Admiral meant.",
+      "hints": ["'Did not sleep well' shows something is on his mind.", "'Could not wait' shows his excitement."],
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 7,
+      "passage": "All the Poppers had grown terribly fond of the funny, solemn little chap, and Mr. Popper's heart was frozen with terror.",
+      "question": "Why is Mr. Popper's heart 'frozen with terror'?",
+      "modelAnswer": "He is terrified that Captain Cook might die. He has become very 'fond' of the penguin, and seeing him so ill makes him feel desperate and scared. The word 'frozen' suggests he feels paralyzed with fear for his beloved pet.",
+      "hints": ["The word 'terror' shows extreme fear.", "What context would make someone feel terror about a pet?"],
+      "chapter": "Chapter 10"
+    },
+    {
+      "id": 8,
+      "passage": "Greta and Captain Cook are both fat and sleek, and the children have never been so rosy.",
+      "question": "How does the cold weather affect the family's health?",
+      "modelAnswer": "The cold seems to be good for them. The text mentions the children are 'rosy' and the penguins are 'sleek,' suggesting they are thriving despite the freezing house. The cold climate that suits penguins also seems to be healthy for the children.",
+      "hints": ["'Rosy' children are usually healthy.", "'Fat and sleek' suggests the penguins are thriving."],
+      "chapter": "Chapter 12"
+    },
+    {
+      "id": 9,
+      "passage": "Mr. Popper had gone down below to say a private farewell to his birds. All that kept him from breaking down completely was the knowledge that what he was doing was best for them.",
+      "question": "How does Mr. Popper feel about giving the penguins to Admiral Drake?",
+      "modelAnswer": "He feels heartbroken but selfless. He is 'breaking down' because he loves them deeply, but he knows they belong in a cold climate for their own good. He puts their wellbeing above his own feelings.",
+      "hints": ["'Breaking down' shows his sadness.", "'Best for them' shows his reasoning."],
+      "chapter": "Chapter 20"
+    }
+  ]
+}

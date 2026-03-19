@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Penguin Learner</string>
+
+    <!-- Navigation -->
+    <string name="nav_vocabulary">Vokabeln</string>
+    <string name="nav_grammar">Grammatik</string>
+    <string name="nav_inference">Schlussfolgerung</string>
+    <string name="nav_prediction">Vorhersage</string>
+    <string name="nav_explanation">Erklärung</string>
+    <string name="nav_retrieval">Quiz</string>
+    <string name="nav_sequencing">Reihenfolge</string>
+
+    <!-- General -->
+    <string name="check">Prüfen</string>
+    <string name="next">Weiter</string>
+    <string name="previous">Zurück</string>
+    <string name="show_answer">Antwort zeigen</string>
+    <string name="i_got_it">Ich hab\'s!</string>
+    <string name="not_yet">Noch nicht</string>
+    <string name="learned">Gelernt</string>
+    <string name="tap_to_flip">Tippen zum Umdrehen</string>
+
+    <!-- Quiz -->
+    <string name="score">Punkte: %1$d / %2$d</string>
+    <string name="chapter_reference">Kapitel: %1$s</string>
+
+    <!-- Home -->
+    <string name="welcome_message">Willkommen bei Penguin Learner!</string>
+    <string name="progress_format">%1$d von %2$d</string>
+</resources>

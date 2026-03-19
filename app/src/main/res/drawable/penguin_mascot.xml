@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Shadow -->
+    <path
+        android:fillColor="#00000020"
+        android:pathData="M100,190 C130,190 155,185 155,178 C155,171 130,166 100,166 C70,166 45,171 45,178 C45,185 70,190 100,190 Z"/>
+
+    <!-- Body outline (dark blue/black) -->
+    <path
+        android:fillColor="#0F2640"
+        android:pathData="M100,25 C65,25 40,55 40,100 C40,145 65,170 100,170 C135,170 160,145 160,100 C160,55 135,25 100,25 Z"/>
+
+    <!-- White belly -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,45 C75,45 55,70 55,105 C55,140 75,160 100,160 C125,160 145,140 145,105 C145,70 125,45 100,45 Z"/>
+
+    <!-- Left wing -->
+    <path
+        android:fillColor="#0F2640"
+        android:pathData="M45,80 C35,85 30,100 35,120 C40,135 50,140 55,135 C55,135 50,110 50,95 C50,85 45,80 45,80 Z"/>
+
+    <!-- Right wing -->
+    <path
+        android:fillColor="#0F2640"
+        android:pathData="M155,80 C165,85 170,100 165,120 C160,135 150,140 145,135 C145,135 150,110 150,95 C150,85 155,80 155,80 Z"/>
+
+    <!-- Left eye white (circle via path) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M82,63 a12,12 0 1,0 0.001,0"/>
+
+    <!-- Right eye white -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M118,63 a12,12 0 1,0 0.001,0"/>
+
+    <!-- Left eye pupil -->
+    <path
+        android:fillColor="#0F2640"
+        android:pathData="M84,70 a6,6 0 1,0 0.001,0"/>
+
+    <!-- Right eye pupil -->
+    <path
+        android:fillColor="#0F2640"
+        android:pathData="M120,70 a6,6 0 1,0 0.001,0"/>
+
+    <!-- Left eye shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M86,72 a2,2 0 1,0 0.001,0"/>
+
+    <!-- Right eye shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M122,72 a2,2 0 1,0 0.001,0"/>
+
+    <!-- Beak -->
+    <path
+        android:fillColor="#FFB800"
+        android:pathData="M100,85 L88,100 L100,95 L112,100 Z"/>
+
+    <!-- Beak highlight -->
+    <path
+        android:fillColor="#FF8C00"
+        android:pathData="M100,85 L100,95 L112,100 Z"/>
+
+    <!-- Left foot -->
+    <path
+        android:fillColor="#FFB800"
+        android:pathData="M75,165 L60,180 L90,180 Z"/>
+
+    <!-- Right foot -->
+    <path
+        android:fillColor="#FFB800"
+        android:pathData="M125,165 L140,180 L110,180 Z"/>
+
+    <!-- Bow tie left -->
+    <path
+        android:fillColor="#E53935"
+        android:pathData="M85,115 L95,120 L85,125 Z"/>
+
+    <!-- Bow tie right -->
+    <path
+        android:fillColor="#E53935"
+        android:pathData="M115,115 L105,120 L115,125 Z"/>
+
+    <!-- Bow tie center -->
+    <path
+        android:fillColor="#E53935"
+        android:pathData="M100,116 a4,4 0 1,0 0.001,0"/>
+</vector>

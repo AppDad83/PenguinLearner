@@ -1,0 +1,60 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "passage": "The Poppers now had twelve penguins. The house was freezing cold, the fish bills were enormous, and Mr. Popper had no work during the winter. Mrs. Popper counted the last of their savings.",
+      "question": "What do you predict the Poppers will need to do about their money problem?",
+      "modelAnswer": "The Poppers will probably need to find a way to make money from the penguins, since they can't afford to keep them otherwise. They might train the penguins to perform tricks and put on shows, or find someone who will pay to see the penguins.",
+      "hints": ["What special thing do the Poppers have that others don't?", "How could penguins help them earn money?"],
+      "chapter": "Chapter 10"
+    },
+    {
+      "id": 2,
+      "passage": "Captain Cook had been very quiet and wasn't eating his fish. He just stood in the corner looking sad. Mr. Popper was worried that his penguin might be sick.",
+      "question": "What do you predict is wrong with Captain Cook?",
+      "modelAnswer": "Captain Cook might be lonely because penguins are social animals that live in groups. He probably misses having other penguins around. This could mean that Mr. Popper will need to find another penguin to keep Captain Cook company.",
+      "hints": ["How do penguins live in the wild?", "What makes animals feel sad sometimes?"],
+      "chapter": "Chapter 6"
+    },
+    {
+      "id": 3,
+      "passage": "The penguins had learned to climb stairs, slide down the banister, and march in perfect formation. The theater manager who came to watch them perform couldn't believe his eyes.",
+      "question": "What do you predict the theater manager will do?",
+      "modelAnswer": "The theater manager will probably offer the Poppers a chance to perform with their penguins in his theater. He seems very impressed by what he's seen, and trained penguins would be an exciting and unusual show that audiences would pay to see.",
+      "hints": ["What is a theater manager's job?", "Why would he visit to watch penguins?"],
+      "chapter": "Chapter 13"
+    },
+    {
+      "id": 4,
+      "passage": "Admiral Drake's expedition was about to leave for Antarctica. He told Mr. Popper that he had room on his ship and that the penguins would be happier in their natural home.",
+      "question": "What do you predict Mr. Popper will decide about the penguins?",
+      "modelAnswer": "Mr. Popper will probably decide to let the penguins go to Antarctica with Admiral Drake, even though it will be hard to say goodbye. He loves the penguins and wants what's best for them, and he knows they belong in their natural home where they can be free.",
+      "hints": ["What does Mr. Popper care about most?", "Where would penguins be happiest?"],
+      "chapter": "Chapter 19"
+    },
+    {
+      "id": 5,
+      "passage": "It was not the postman... It was an expressman with the largest box Mr. Popper had ever seen. The box had air holes and a label that said 'KEEP COOL'.",
+      "question": "What do you predict is inside the box?",
+      "modelAnswer": "I predict there is a penguin inside. Mr. Popper wrote to Admiral Drake about penguins, and the box has 'air holes' and says 'KEEP COOL', which is perfect for a living polar animal that needs to breathe and stay cold.",
+      "hints": ["Why would a box need air holes?", "What kind of animal needs to be kept cool?"],
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 6,
+      "passage": "I am, therefore, shipping you, under separate cover, our penguin. You may keep her.",
+      "question": "What will happen when the new penguin arrives?",
+      "modelAnswer": "I think Captain Cook will get better. The curator says Captain Cook is likely 'lonely,' so having a companion like Greta will make him happy and healthy again. Penguins are social animals and need company.",
+      "hints": ["Why was Captain Cook sad?", "What do social animals need?"],
+      "chapter": "Chapter 10"
+    },
+    {
+      "id": 7,
+      "passage": "But, Papa, what are we to do for money? The penguins have to eat, but have you any idea what the bills for all those live fish are?",
+      "question": "How will the Poppers solve their money problems?",
+      "modelAnswer": "They will likely use the penguins to earn money. Mr. Popper mentions 'trained seals' and thinks he can train the penguins to perform in theaters, which would pay their bills. The penguins' abilities could become their income source.",
+      "hints": ["What entertainment do people pay to see?", "What can the penguins do that's special?"],
+      "chapter": "Chapter 13"
+    }
+  ]
+}

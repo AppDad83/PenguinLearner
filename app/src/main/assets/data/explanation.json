@@ -1,0 +1,68 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "passage": "Mr. Popper was a house painter, but he didn't paint houses during the winter because it was too cold for the paint to dry properly. This meant the Poppers had to save money during the painting season to last through the winter.",
+      "question": "Explain why Mr. Popper's job made life difficult for his family.",
+      "modelAnswer": "Mr. Popper's job as a house painter was seasonal work, meaning he could only work during warmer months. This created problems because the family had no income during winter but still had to pay for food, heating, and other expenses. They had to be very careful with money and save during summer to survive the winter months.",
+      "hints": ["What happens when you can't work for several months?", "Why can't you paint houses in winter?"],
+      "chapter": "Chapter 1"
+    },
+    {
+      "id": 2,
+      "passage": "Mr. Popper made holes in the refrigerator so that air could get in and out. He left the door open so Captain Cook could go in and out whenever he wanted. The penguin loved to sleep in the cold refrigerator.",
+      "question": "Explain why Mr. Popper modified the refrigerator and why this helped Captain Cook.",
+      "modelAnswer": "Mr. Popper modified the refrigerator because penguins need cold temperatures to be comfortable and healthy. In Antarctica, where penguins come from, it is very cold. By giving Captain Cook a cold place to sleep, Mr. Popper was trying to recreate the penguin's natural environment so he wouldn't get too hot.",
+      "hints": ["What climate are penguins used to?", "Why would a penguin need a cold place?"],
+      "chapter": "Chapter 4"
+    },
+    {
+      "id": 3,
+      "passage": "The penguins marched in a perfectly straight line, one behind the other. When the first penguin turned, all the others followed. They had learned to do tricks like climbing ladders and diving from platforms.",
+      "question": "Explain how the Poppers were able to train the penguins to perform.",
+      "modelAnswer": "The Poppers were able to train the penguins because penguins are intelligent birds that can learn patterns and follow each other. Penguins naturally live in groups and follow a leader, so they were already used to moving together. The Poppers probably used fish as rewards and practiced the same movements many times until the penguins learned them.",
+      "hints": ["How do animals usually learn tricks?", "What do penguins naturally do in groups?"],
+      "chapter": "Chapter 12"
+    },
+    {
+      "id": 4,
+      "passage": "Admiral Drake explained that he wanted to start a penguin colony in the North Pole. There were no penguins there, but the conditions were similar to Antarctica. The Popper Penguins would be the first penguins at the North Pole.",
+      "question": "Explain why Admiral Drake's plan could work and why it was a good solution.",
+      "modelAnswer": "Admiral Drake's plan could work because the North Pole is very cold like Antarctica, so penguins could survive there. It was a good solution because the penguins would be in a natural cold environment instead of a house, they would be free, and they could start a new penguin population. It also solved the Poppers' problem of not being able to afford caring for twelve penguins.",
+      "hints": ["What do the North and South Poles have in common?", "Why couldn't the penguins stay with the Poppers forever?"],
+      "chapter": "Chapter 20"
+    },
+    {
+      "id": 5,
+      "passage": "He didn't want to discuss Captain Cook with this unsympathetic service man who already thought Mr. Popper was not quite right in his head.",
+      "question": "Explain why Mr. Popper is reluctant to tell the service man about the penguin.",
+      "modelAnswer": "Mr. Popper is reluctant because the service man is 'unsympathetic' and already thinks Mr. Popper is 'not quite right in his head.' He doesn't want to be judged or argued with further. Explaining about a pet penguin would only make the service man think he is even more strange.",
+      "hints": ["What does 'unsympathetic' mean?", "How does the service man already view Mr. Popper?"],
+      "chapter": "Chapter 5"
+    },
+    {
+      "id": 6,
+      "passage": "If you folks at the City Hall don't even know what penguins are, then I don't think I need a license.",
+      "question": "Explain why Mr. Popper decides not to get a license.",
+      "modelAnswer": "He decides not to get one because the people at City Hall are confused and don't even know what a penguin is. Since they have no specific rules for penguins, he feels a license is unnecessary. There's no point following a rule that doesn't exist.",
+      "hints": ["What kind of pet license rules exist?", "What happens when officials don't understand something?"],
+      "chapter": "Chapter 6"
+    },
+    {
+      "id": 7,
+      "passage": "Those penguins may have heathen ways, but I think this one is going to be quite a help around the house. He's been picking up everything!",
+      "question": "Explain why Mrs. Popper changes her mind and thinks the penguin will be helpful.",
+      "modelAnswer": "She thinks he will be helpful because he started 'picking up' the house. He gathered many small items like buttons, checkers, and hairpins and put them in the icebox, which she sees as a form of tidying. Even though it's unusual behavior, she appreciates having a 'helper'.",
+      "hints": ["What does 'picking up' mean in a house?", "What items did the penguin collect?"],
+      "chapter": "Chapter 7"
+    },
+    {
+      "id": 8,
+      "passage": "Papa, I don't want to live on Easy Street. I want to go back to Proudfoot Avenue.",
+      "question": "Explain why Mrs. Popper wants to refuse the movie offer.",
+      "modelAnswer": "Mrs. Popper values her simple life and home. Even though they could be rich ('Easy Street'), she prefers the comfort and familiarity of their own house on 'Proudfoot Avenue'. Money and fame are less important to her than being home with her family.",
+      "hints": ["What does 'Easy Street' represent?", "What does Mrs. Popper value most?"],
+      "chapter": "Chapter 19"
+    }
+  ]
+}

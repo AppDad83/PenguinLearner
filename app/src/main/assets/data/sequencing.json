@@ -1,0 +1,89 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "title": "The Arrival of Captain Cook",
+      "events": [
+        {"id": 1, "text": "Mr. Popper listens to Admiral Drake on the radio", "correctPosition": 1},
+        {"id": 2, "text": "A mysterious package arrives at the Popper house", "correctPosition": 2},
+        {"id": 3, "text": "The Poppers discover a penguin inside the box", "correctPosition": 3},
+        {"id": 4, "text": "Mr. Popper names the penguin Captain Cook", "correctPosition": 4},
+        {"id": 5, "text": "Captain Cook takes his first bath in the tub", "correctPosition": 5}
+      ],
+      "chapter": "Chapters 1-3"
+    },
+    {
+      "id": 2,
+      "title": "Making a Home for Captain Cook",
+      "events": [
+        {"id": 1, "text": "Captain Cook refuses to eat bread and crackers", "correctPosition": 1},
+        {"id": 2, "text": "Mr. Popper buys fish from the market", "correctPosition": 2},
+        {"id": 3, "text": "Mr. Popper has holes drilled in the refrigerator", "correctPosition": 3},
+        {"id": 4, "text": "Captain Cook makes the refrigerator his home", "correctPosition": 4},
+        {"id": 5, "text": "The serviceman is confused by the modified refrigerator", "correctPosition": 5}
+      ],
+      "chapter": "Chapters 3-5"
+    },
+    {
+      "id": 3,
+      "title": "The Growing Penguin Family",
+      "events": [
+        {"id": 1, "text": "Captain Cook gets sick and stops eating", "correctPosition": 1},
+        {"id": 2, "text": "Greta arrives from the aquarium", "correctPosition": 2},
+        {"id": 3, "text": "Captain Cook and Greta become friends", "correctPosition": 3},
+        {"id": 4, "text": "Ten penguin eggs hatch in the cellar", "correctPosition": 4},
+        {"id": 5, "text": "The Poppers now have twelve penguins", "correctPosition": 5}
+      ],
+      "chapter": "Chapters 6-11"
+    },
+    {
+      "id": 4,
+      "title": "Popper's Performing Penguins",
+      "events": [
+        {"id": 1, "text": "The Poppers run out of money to care for the penguins", "correctPosition": 1},
+        {"id": 2, "text": "Mr. Popper trains the penguins to do tricks", "correctPosition": 2},
+        {"id": 3, "text": "The family signs a theater contract", "correctPosition": 3},
+        {"id": 4, "text": "The penguins begin performing in theaters", "correctPosition": 4},
+        {"id": 5, "text": "Popper's Performing Penguins become famous on tour", "correctPosition": 5}
+      ],
+      "chapter": "Chapters 12-16"
+    },
+    {
+      "id": 5,
+      "title": "The End of the Adventure",
+      "events": [
+        {"id": 1, "text": "The penguins perform in many cities across America", "correctPosition": 1},
+        {"id": 2, "text": "Mr. Popper is arrested in New York", "correctPosition": 2},
+        {"id": 3, "text": "Admiral Drake invites the penguins to the North Pole", "correctPosition": 3},
+        {"id": 4, "text": "The Poppers say goodbye to their penguins", "correctPosition": 4},
+        {"id": 5, "text": "Mr. Popper and the penguins leave for the North Pole", "correctPosition": 5}
+      ],
+      "chapter": "Chapters 17-20"
+    },
+    {
+      "id": 6,
+      "title": "The Complete Story",
+      "events": [
+        {"id": 1, "text": "Mr. Popper writes a letter to Admiral Drake", "correctPosition": 1},
+        {"id": 2, "text": "A penguin named Captain Cook arrives in a box", "correctPosition": 2},
+        {"id": 3, "text": "Captain Cook gets sick and Greta arrives", "correctPosition": 3},
+        {"id": 4, "text": "Ten penguin chicks hatch in the cellar", "correctPosition": 4},
+        {"id": 5, "text": "Mr. Popper trains the penguins for a show", "correctPosition": 5},
+        {"id": 6, "text": "The penguins become famous on tour", "correctPosition": 6}
+      ],
+      "chapter": "Complete Story"
+    },
+    {
+      "id": 7,
+      "title": "From Stillwater to Fame",
+      "events": [
+        {"id": 1, "text": "Mr. Popper has holes drilled in the icebox", "correctPosition": 1},
+        {"id": 2, "text": "The cellar freezing plant is installed", "correctPosition": 2},
+        {"id": 3, "text": "The penguins learn to march and perform", "correctPosition": 3},
+        {"id": 4, "text": "The family signs a theater contract", "correctPosition": 4},
+        {"id": 5, "text": "They travel by taxi to their first show", "correctPosition": 5}
+      ],
+      "chapter": "Chapters 4-14"
+    }
+  ]
+}
