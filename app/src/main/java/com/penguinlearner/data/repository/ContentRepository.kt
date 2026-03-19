@@ -99,4 +99,17 @@ class ContentRepository(private val context: Context) {
             emptyList()
         }
     }
+
+    fun loadChapters(): List<Chapter> {
+        return try {
+            val inputStream = context.assets.open("data/chapters.json")
+            val reader = InputStreamReader(inputStream)
+            val data = gson.fromJson(reader, ChaptersData::class.java)
+            reader.close()
+            data.chapters
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
+        }
+    }
 }

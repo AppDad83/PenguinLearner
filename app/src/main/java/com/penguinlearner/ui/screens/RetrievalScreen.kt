@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,7 +31,7 @@ fun RetrievalScreen(
 ) {
     val scope = rememberCoroutineScope()
     var questions by remember { mutableStateOf<List<RetrievalQuestion>>(emptyList()) }
-    var currentIndex by remember { mutableIntStateOf(0) }
+    var currentIndex by rememberSaveable { mutableIntStateOf(0) }
     var selectedAnswerIndex by remember { mutableStateOf<Int?>(null) }
     var hasAnswered by remember { mutableStateOf(false) }
     var localScore by remember { mutableIntStateOf(0) }

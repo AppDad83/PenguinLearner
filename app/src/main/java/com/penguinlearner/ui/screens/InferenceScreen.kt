@@ -7,6 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
@@ -25,7 +26,7 @@ fun InferenceScreen(
 ) {
     val scope = rememberCoroutineScope()
     var questions by remember { mutableStateOf<List<InferenceQuestion>>(emptyList()) }
-    var currentIndex by remember { mutableIntStateOf(0) }
+    var currentIndex by rememberSaveable { mutableIntStateOf(0) }
     var userAnswer by remember { mutableStateOf("") }
     var showModelAnswer by remember { mutableStateOf(false) }
     var hasAnswered by remember { mutableStateOf(false) }

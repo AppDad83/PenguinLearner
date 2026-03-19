@@ -68,6 +68,14 @@ sealed class BottomNavItem(
         unselectedIcon = Icons.Outlined.FormatListNumbered
     )
 
+    data object Chapters : BottomNavItem(
+        route = "chapters",
+        titleDe = "Kapitel",
+        titleEn = "Chapters",
+        selectedIcon = Icons.Filled.Book,
+        unselectedIcon = Icons.Outlined.Book
+    )
+
     companion object {
         val items = listOf(
             Vocabulary,
@@ -76,7 +84,8 @@ sealed class BottomNavItem(
             Prediction,
             Explanation,
             Retrieval,
-            Sequencing
+            Sequencing,
+            Chapters
         )
     }
 }
