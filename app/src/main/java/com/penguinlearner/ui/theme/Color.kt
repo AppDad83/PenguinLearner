@@ -27,3 +27,6 @@ val WrongRedLight = Color(0xFFFFEBEE)
 // Ice/Snow Colors for backgrounds
 val IceBlue = Color(0xFFE3F2FD)
 val SnowWhite = Color(0xFFFAFAFA)
+
+// Highlighter Color
+val HighlightYellow = Color(0xFFFFEB3B)
