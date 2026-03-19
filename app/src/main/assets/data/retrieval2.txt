@@ -1,0 +1,124 @@
+{
+  "retrieval": [
+    {
+      "question": "What is Mr. Popper's job?",
+      "options": ["Explorer", "Scientist", "House painter", "Bus driver"],
+      "answer": "House painter",
+      "chapter": "I"
+    },
+    {
+      "question": "Where does Mr. Popper live?",
+      "options": ["New York", "Stillwater", "Chicago", "London"],
+      "answer": "Stillwater",
+      "chapter": "I"
+    },
+    {
+      "question": "What is the name of the street where the Poppers live?",
+      "options": ["Elm Street", "Proudfoot Avenue", "Main Street", "South Pole Road"],
+      "answer": "Proudfoot Avenue",
+      "chapter": "I"
+    },
+    {
+      "question": "What is the title of the book Mr. Popper reads in Chapter II?",
+      "options": ["Arctic Adventures", "Antarctic Adventures", "The Life of Penguins", "Admiral Drake's Journey"],
+      "answer": "Antarctic Adventures",
+      "chapter": "II"
+    },
+    {
+      "question": "Who sent the first penguin to Mr. Popper?",
+      "options": ["Dr. Smith", "Mr. Greenbaum", "Admiral Drake", "Mrs. Callahan"],
+      "answer": "Admiral Drake",
+      "chapter": "III"
+    },
+    {
+      "question": "What was the name of the first penguin?",
+      "options": ["Captain Cook", "Admiral Drake", "Greta", "Nelson"],
+      "answer": "Captain Cook",
+      "chapter": "III"
+    },
+    {
+      "question": "Where do the penguins sleep in the Popper house at first?",
+      "options": ["In the bathtub", "In the cellar", "In the refrigerator", "In the garden"],
+      "answer": "In the refrigerator",
+      "chapter": "IV"
+    },
+    {
+      "question": "What did Captain Cook eat in the dining room that made Mrs. Popper angry?",
+      "options": ["Beans", "Goldfish", "Shrimps", "Apples"],
+      "answer": "Goldfish",
+      "chapter": "IV"
+    },
+    {
+      "question": "How many air holes did the service man drill in the refrigerator door?",
+      "options": ["One", "Three", "Five", "Ten"],
+      "answer": "Five",
+      "chapter": "V"
+    },
+    {
+      "question": "What did the policeman first think Captain Cook was?",
+      "options": ["A lion", "A giant parrot", "A goose", "A dog"],
+      "answer": "A giant parrot",
+      "chapter": "VI"
+    },
+    {
+      "question": "What did Mr. Popper use as a leash for Captain Cook?",
+      "options": ["A leather strap", "A chain", "A clothesline", "A ribbon"],
+      "answer": "A clothesline",
+      "chapter": "VIII"
+    },
+    {
+      "question": "What was Captain Cook's temperature when he was very sick?",
+      "options": ["98 degrees", "100 degrees", "104 degrees", "108 degrees"],
+      "answer": "104 degrees",
+      "chapter": "X"
+    },
+    {
+      "question": "Where did the second penguin, Greta, come from?",
+      "options": ["The South Pole", "The North Pole", "Mammoth City Aquarium", "London Zoo"],
+      "answer": "Mammoth City Aquarium",
+      "chapter": "XI"
+    },
+    {
+      "question": "How many eggs did Greta lay in total?",
+      "options": ["Two", "Five", "Ten", "Twelve"],
+      "answer": "Ten",
+      "chapter": "XII"
+    },
+    {
+      "question": "Which two penguins usually get into a fight with each other?",
+      "options": ["Captain Cook and Greta", "Nelson and Columbus", "Scott and Magellan", "Janie and Bill"],
+      "answer": "Nelson and Columbus",
+      "chapter": "XIII"
+    },
+    {
+      "question": "What is the name of the penguin theater act?",
+      "options": ["The Flying Birds", "Popper’s Performing Penguins", "Drake’s Divers", "Stillwater Stars"],
+      "answer": "Popper’s Performing Penguins",
+      "chapter": "XIV"
+    },
+    {
+      "question": "What song did Mrs. Popper play for the penguin marching drill?",
+      "options": ["Merry Widow Waltz", "Military March", "By the Brook", "Happy Birthday"],
+      "answer": "Military March",
+      "chapter": "XV"
+    },
+    {
+      "question": "How much money per week did the penguins earn on their contract?",
+      "options": ["$50", "$500", "$1,000", "$5,000"],
+      "answer": "$5,000",
+      "chapter": "XV"
+    },
+    {
+      "question": "Why was Mr. Popper arrested in New York?",
+      "options": ["For not having a license", "For going to the wrong theater (Regal)", "For stealing fish", "For walking on the roof"],
+      "answer": "For going to the wrong theater (Regal)",
+      "chapter": "XIX"
+    },
+    {
+      "question": "Who offered Mr. Popper a contract to put the penguins in movies?",
+      "options": ["Admiral Drake", "Mr. Greenbaum", "Mr. Klein", "The Mayor"],
+      "answer": "Mr. Klein",
+      "chapter": "XIX"
+    }
+  ]
+}
