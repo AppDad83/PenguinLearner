@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.penguinlearner.data.repository.ContentRepository
+import com.penguinlearner.data.repository.DictionaryRepository
 import com.penguinlearner.data.repository.ProgressRepository
 import com.penguinlearner.ui.screens.*
 
@@ -24,7 +25,8 @@ object NavRoutes {
 fun PenguinNavHost(
     navController: NavHostController,
     contentRepository: ContentRepository,
-    progressRepository: ProgressRepository
+    progressRepository: ProgressRepository,
+    dictionaryRepository: DictionaryRepository
 ) {
     NavHost(
         navController = navController,
@@ -65,6 +67,7 @@ fun PenguinNavHost(
             InferenceScreen(
                 contentRepository = contentRepository,
                 progressRepository = progressRepository,
+                dictionaryRepository = dictionaryRepository,
                 onNavigateBack = { navController.popBackStack() },
                 onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
             )
@@ -74,6 +77,7 @@ fun PenguinNavHost(
             PredictionScreen(
                 contentRepository = contentRepository,
                 progressRepository = progressRepository,
+                dictionaryRepository = dictionaryRepository,
                 onNavigateBack = { navController.popBackStack() },
                 onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
             )
@@ -83,6 +87,7 @@ fun PenguinNavHost(
             ExplanationScreen(
                 contentRepository = contentRepository,
                 progressRepository = progressRepository,
+                dictionaryRepository = dictionaryRepository,
                 onNavigateBack = { navController.popBackStack() },
                 onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
             )

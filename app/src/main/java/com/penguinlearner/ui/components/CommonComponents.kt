@@ -29,7 +29,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.IntOffset
 import com.penguinlearner.ui.theme.*
+
+// Data class for word click information
+data class WordClickInfo(
+    val index: Int,
+    val word: String
+)
+
+// Helper function to extract a word from text by its index
+fun extractWordFromText(text: String, index: Int): String {
+    val words = text.split(Regex("(?<=\\s)|(?=\\s)"))
+    val rawWord = words.getOrNull(index) ?: ""
+    return rawWord.trim().lowercase().replace(Regex("[.,!?\"'();:—–-]"), "")
+}
 
 @Composable
 fun ProgressHeader(

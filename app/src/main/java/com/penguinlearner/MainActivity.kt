@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.penguinlearner.data.repository.ContentRepository
+import com.penguinlearner.data.repository.DictionaryRepository
 import com.penguinlearner.data.repository.ProgressRepository
 import com.penguinlearner.ui.navigation.PenguinNavHost
 import com.penguinlearner.ui.theme.PenguinLearnerTheme
@@ -19,12 +20,14 @@ class MainActivity : ComponentActivity() {
 
         val contentRepository = ContentRepository(this)
         val progressRepository = ProgressRepository(this)
+        val dictionaryRepository = DictionaryRepository(this)
 
         setContent {
             PenguinLearnerTheme {
                 PenguinLearnerApp(
                     contentRepository = contentRepository,
-                    progressRepository = progressRepository
+                    progressRepository = progressRepository,
+                    dictionaryRepository = dictionaryRepository
                 )
             }
         }
@@ -35,7 +38,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PenguinLearnerApp(
     contentRepository: ContentRepository,
-    progressRepository: ProgressRepository
+    progressRepository: ProgressRepository,
+    dictionaryRepository: DictionaryRepository
 ) {
     val navController = rememberNavController()
 
@@ -63,7 +67,8 @@ fun PenguinLearnerApp(
             PenguinNavHost(
                 navController = navController,
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                dictionaryRepository = dictionaryRepository
             )
         }
     }

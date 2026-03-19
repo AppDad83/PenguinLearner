@@ -17,6 +17,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.penguinlearner.data.models.InferenceQuestion
 import com.penguinlearner.data.repository.ContentRepository
+import com.penguinlearner.data.repository.DictionaryRepository
 import com.penguinlearner.data.repository.ProgressRepository
 import com.penguinlearner.ui.components.*
 import com.penguinlearner.ui.theme.*
@@ -27,6 +28,7 @@ import kotlinx.coroutines.launch
 fun InferenceScreen(
     contentRepository: ContentRepository,
     progressRepository: ProgressRepository,
+    dictionaryRepository: DictionaryRepository,
     onNavigateBack: () -> Unit,
     onNavigateToChapters: () -> Unit
 ) {
@@ -44,6 +46,9 @@ fun InferenceScreen(
     var questionHighlights by remember { mutableStateOf<Set<Int>>(emptySet()) }
     var hintsHighlights by remember { mutableStateOf<Map<Int, Set<Int>>>(emptyMap()) }
     var modelAnswerHighlights by remember { mutableStateOf<Set<Int>>(emptySet()) }
+
+    // Translation popup state
+    var popupState by remember { mutableStateOf<PopupState?>(null) }
 
     fun clearHighlights() {
         passageHighlights = emptySet()
@@ -171,6 +176,12 @@ fun InferenceScreen(
                     } else {
                         passageHighlights + index
                     }
+                    // Show translation popup
+                    val word = extractWordFromText(currentQuestion.passage, index)
+                    if (word.isNotEmpty()) {
+                        val entry = dictionaryRepository.getTranslation(word)
+                        popupState = PopupState(word, entry)
+                    }
                 },
                 highlightEnabled = highlightEnabled
             )
@@ -186,6 +197,12 @@ fun InferenceScreen(
                         questionHighlights - index
                     } else {
                         questionHighlights + index
+                    }
+                    // Show translation popup
+                    val word = extractWordFromText(currentQuestion.question, index)
+                    if (word.isNotEmpty()) {
+                        val entry = dictionaryRepository.getTranslation(word)
+                        popupState = PopupState(word, entry)
                     }
                 },
                 highlightEnabled = highlightEnabled
@@ -231,6 +248,13 @@ fun InferenceScreen(
                             } else {
                                 hintsHighlights + (hintIndex to (currentHintHighlights + wordIndex))
                             }
+                            // Show translation popup
+                            val hint = currentQuestion.hints.getOrNull(hintIndex) ?: ""
+                            val word = extractWordFromText(hint, wordIndex)
+                            if (word.isNotEmpty()) {
+                                val entry = dictionaryRepository.getTranslation(word)
+                                popupState = PopupState(word, entry)
+                            }
                         },
                         highlightEnabled = highlightEnabled
                     )
@@ -247,6 +271,12 @@ fun InferenceScreen(
                         modelAnswerHighlights - index
                     } else {
                         modelAnswerHighlights + index
+                    }
+                    // Show translation popup
+                    val word = extractWordFromText(currentQuestion.modelAnswer, index)
+                    if (word.isNotEmpty()) {
+                        val entry = dictionaryRepository.getTranslation(word)
+                        popupState = PopupState(word, entry)
                     }
                 },
                 highlightEnabled = highlightEnabled,
@@ -303,6 +333,14 @@ fun InferenceScreen(
             },
             isPreviousEnabled = currentIndex > 0,
             isNextEnabled = currentIndex < questions.size - 1
+        )
+    }
+
+    // Translation popup
+    popupState?.let { state ->
+        TranslationPopup(
+            popupState = state,
+            onDismiss = { popupState = null }
         )
     }
 }
