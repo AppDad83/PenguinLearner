@@ -1,6 +1,7 @@
 package com.penguinlearner.ui.screens
 
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
@@ -11,19 +12,22 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DragHandle
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import com.penguinlearner.data.models.SequenceEvent
 import com.penguinlearner.data.models.SequencingExercise
 import com.penguinlearner.data.repository.ContentRepository
@@ -31,6 +35,7 @@ import com.penguinlearner.data.repository.ProgressRepository
 import com.penguinlearner.ui.components.*
 import com.penguinlearner.ui.theme.*
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 @Composable
 fun SequencingScreen(
@@ -45,6 +50,10 @@ fun SequencingScreen(
     var isCorrect by remember { mutableStateOf(false) }
     val completedIds by progressRepository.completedSequencingIds.collectAsState(initial = emptySet())
 
+    // Drag state
+    var draggedItemIndex by remember { mutableStateOf<Int?>(null) }
+    var dragOffset by remember { mutableFloatStateOf(0f) }
+
     LaunchedEffect(Unit) {
         exercises = contentRepository.loadSequencingExercises()
     }
@@ -54,6 +63,8 @@ fun SequencingScreen(
             currentOrder = exercises[currentIndex].events.shuffled()
             showResults = false
             isCorrect = false
+            draggedItemIndex = null
+            dragOffset = 0f
         }
     }
 
@@ -64,6 +75,13 @@ fun SequencingScreen(
 
     val currentExercise = exercises[currentIndex]
     val isCompleted = completedIds.contains(currentExercise.id)
+
+    // Calculate item height for drag detection
+    val density = LocalDensity.current
+    val itemHeightDp = 80.dp
+    val itemHeightPx = with(density) { itemHeightDp.toPx() }
+    val spacingPx = with(density) { 8.dp.toPx() }
+    val totalItemHeightPx = itemHeightPx + spacingPx
 
     Column(
         modifier = Modifier
@@ -99,7 +117,7 @@ fun SequencingScreen(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Bringe die Ereignisse in die richtige Reihenfolge",
+                    text = if (showResults) "Ergebnis:" else "Halte und ziehe die Karten in die richtige Reihenfolge",
                     style = MaterialTheme.typography.bodySmall,
                     color = PenguinWhite.copy(alpha = 0.7f)
                 )
@@ -112,40 +130,87 @@ fun SequencingScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Sortable list
-        LazyColumn(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+        // Drag & Drop list
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
         ) {
-            itemsIndexed(
-                items = currentOrder,
-                key = { _, item -> item.id }
-            ) { index, event ->
-                SequenceCard(
-                    event = event,
-                    position = index + 1,
-                    showResult = showResults,
-                    isInCorrectPosition = event.correctPosition == index + 1,
-                    correctPosition = event.correctPosition,
-                    onMoveUp = {
-                        if (index > 0 && !showResults) {
-                            val newList = currentOrder.toMutableList()
-                            val item = newList.removeAt(index)
-                            newList.add(index - 1, item)
-                            currentOrder = newList
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                currentOrder.forEachIndexed { index, event ->
+                    val isDragging = draggedItemIndex == index
+                    val targetOffset = when {
+                        draggedItemIndex == null -> 0f
+                        isDragging -> dragOffset
+                        draggedItemIndex!! < index && dragOffset > (index - draggedItemIndex!!) * itemHeightPx - itemHeightPx / 2 -> -totalItemHeightPx
+                        draggedItemIndex!! > index && dragOffset < (index - draggedItemIndex!!) * itemHeightPx + itemHeightPx / 2 -> totalItemHeightPx
+                        else -> 0f
+                    }
+
+                    val animatedOffset by animateFloatAsState(
+                        targetValue = if (isDragging) dragOffset else targetOffset,
+                        label = "offset"
+                    )
+
+                    val scale by animateFloatAsState(
+                        targetValue = if (isDragging) 1.05f else 1f,
+                        label = "scale"
+                    )
+
+                    val elevation by animateDpAsState(
+                        targetValue = if (isDragging) 8.dp else 0.dp,
+                        label = "elevation"
+                    )
+
+                    DraggableSequenceCard(
+                        event = event,
+                        position = index + 1,
+                        showResult = showResults,
+                        isInCorrectPosition = event.correctPosition == index + 1,
+                        correctPosition = event.correctPosition,
+                        isDragging = isDragging,
+                        dragEnabled = !showResults,
+                        offsetY = animatedOffset,
+                        scale = scale,
+                        elevation = elevation,
+                        onDragStart = {
+                            if (!showResults) {
+                                draggedItemIndex = index
+                                dragOffset = 0f
+                            }
+                        },
+                        onDrag = { change ->
+                            if (!showResults && draggedItemIndex != null) {
+                                dragOffset += change
+                            }
+                        },
+                        onDragEnd = {
+                            if (!showResults && draggedItemIndex != null) {
+                                // Calculate new position
+                                val draggedIdx = draggedItemIndex!!
+                                val offsetInItems = (dragOffset / totalItemHeightPx).roundToInt()
+                                val newIndex = (draggedIdx + offsetInItems).coerceIn(0, currentOrder.size - 1)
+
+                                if (newIndex != draggedIdx) {
+                                    val newList = currentOrder.toMutableList()
+                                    val item = newList.removeAt(draggedIdx)
+                                    newList.add(newIndex, item)
+                                    currentOrder = newList
+                                }
+
+                                draggedItemIndex = null
+                                dragOffset = 0f
+                            }
+                        },
+                        onDragCancel = {
+                            draggedItemIndex = null
+                            dragOffset = 0f
                         }
-                    },
-                    onMoveDown = {
-                        if (index < currentOrder.size - 1 && !showResults) {
-                            val newList = currentOrder.toMutableList()
-                            val item = newList.removeAt(index)
-                            newList.add(index + 1, item)
-                            currentOrder = newList
-                        }
-                    },
-                    canMoveUp = index > 0 && !showResults,
-                    canMoveDown = index < currentOrder.size - 1 && !showResults
-                )
+                    )
+                }
             }
         }
 
@@ -265,42 +330,85 @@ fun SequencingScreen(
 }
 
 @Composable
-private fun SequenceCard(
+private fun DraggableSequenceCard(
     event: SequenceEvent,
     position: Int,
     showResult: Boolean,
     isInCorrectPosition: Boolean,
     correctPosition: Int,
-    onMoveUp: () -> Unit,
-    onMoveDown: () -> Unit,
-    canMoveUp: Boolean,
-    canMoveDown: Boolean
+    isDragging: Boolean,
+    dragEnabled: Boolean,
+    offsetY: Float,
+    scale: Float,
+    elevation: Dp,
+    onDragStart: () -> Unit,
+    onDrag: (Float) -> Unit,
+    onDragEnd: () -> Unit,
+    onDragCancel: () -> Unit
 ) {
     val backgroundColor = when {
         showResult && isInCorrectPosition -> CorrectGreenLight
         showResult && !isInCorrectPosition -> WrongRedLight
+        isDragging -> PenguinYellow.copy(alpha = 0.3f)
         else -> MaterialTheme.colorScheme.surface
     }
 
     val borderColor = when {
         showResult && isInCorrectPosition -> CorrectGreen
         showResult && !isInCorrectPosition -> WrongRed
+        isDragging -> PenguinYellow
         else -> PenguinLightGray
     }
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .border(2.dp, borderColor, RoundedCornerShape(12.dp)),
+            .height(72.dp)
+            .zIndex(if (isDragging) 1f else 0f)
+            .graphicsLayer {
+                translationY = offsetY
+                scaleX = scale
+                scaleY = scale
+            }
+            .shadow(elevation, RoundedCornerShape(12.dp))
+            .border(2.dp, borderColor, RoundedCornerShape(12.dp))
+            .then(
+                if (dragEnabled) {
+                    Modifier.pointerInput(Unit) {
+                        detectDragGesturesAfterLongPress(
+                            onDragStart = { onDragStart() },
+                            onDrag = { change, dragAmount ->
+                                change.consume()
+                                onDrag(dragAmount.y)
+                            },
+                            onDragEnd = { onDragEnd() },
+                            onDragCancel = { onDragCancel() }
+                        )
+                    }
+                } else {
+                    Modifier
+                }
+            ),
         colors = CardDefaults.cardColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(12.dp)
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // Drag handle icon (only when not showing results)
+            if (!showResult) {
+                Icon(
+                    imageVector = Icons.Default.DragHandle,
+                    contentDescription = "Ziehen zum Sortieren",
+                    tint = if (isDragging) PenguinOrange else PenguinGray,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+            }
+
             // Position number
             Surface(
                 shape = RoundedCornerShape(8.dp),
@@ -323,8 +431,9 @@ private fun SequenceCard(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = event.text,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = NavyBlueDark
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = NavyBlueDark,
+                    maxLines = 2
                 )
                 if (showResult && !isInCorrectPosition) {
                     Text(
@@ -332,34 +441,6 @@ private fun SequenceCard(
                         style = MaterialTheme.typography.labelSmall,
                         color = WrongRed
                     )
-                }
-            }
-
-            // Move buttons (only when not showing results)
-            if (!showResult) {
-                Column {
-                    IconButton(
-                        onClick = onMoveUp,
-                        enabled = canMoveUp,
-                        modifier = Modifier.size(32.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.KeyboardArrowUp,
-                            contentDescription = "Nach oben",
-                            tint = if (canMoveUp) NavyBlue else PenguinLightGray
-                        )
-                    }
-                    IconButton(
-                        onClick = onMoveDown,
-                        enabled = canMoveDown,
-                        modifier = Modifier.size(32.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.KeyboardArrowDown,
-                            contentDescription = "Nach unten",
-                            tint = if (canMoveDown) NavyBlue else PenguinLightGray
-                        )
-                    }
                 }
             }
         }
