@@ -32,6 +32,8 @@ fun PenguinNavHost(
     ) {
         composable(NavRoutes.HOME) {
             HomeScreen(
+                contentRepository = contentRepository,
+                progressRepository = progressRepository,
                 onNavigateToVocabulary = { navController.navigate(NavRoutes.VOCABULARY) },
                 onNavigateToGrammar = { navController.navigate(NavRoutes.GRAMMAR) },
                 onNavigateToInference = { navController.navigate(NavRoutes.INFERENCE) },
