@@ -8,10 +8,12 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.NavigateBefore
 import androidx.compose.material.icons.filled.NavigateNext
+import androidx.compose.material.icons.outlined.BorderColor
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -19,8 +21,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.penguinlearner.ui.theme.*
 
@@ -284,5 +290,233 @@ fun EmptyStateMessage(
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center
         )
+    }
+}
+
+// Highlighter components
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HighlighterToggle(
+    isEnabled: Boolean,
+    onToggle: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    FilterChip(
+        selected = isEnabled,
+        onClick = onToggle,
+        label = { Text(if (isEnabled) "Markieren AN" else "Markieren") },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Outlined.BorderColor,
+                contentDescription = null,
+                modifier = Modifier.size(18.dp),
+                tint = if (isEnabled) PenguinOrange else MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        },
+        colors = FilterChipDefaults.filterChipColors(
+            selectedContainerColor = PenguinYellow.copy(alpha = 0.3f),
+            selectedLabelColor = PenguinOrange,
+            selectedLeadingIconColor = PenguinOrange
+        ),
+        modifier = modifier
+    )
+}
+
+@Composable
+fun HighlightableText(
+    text: String,
+    highlightedIndices: Set<Int>,
+    onWordClick: (Int) -> Unit,
+    highlightEnabled: Boolean,
+    style: TextStyle = MaterialTheme.typography.bodyLarge,
+    textColor: Color = NavyBlueDark,
+    modifier: Modifier = Modifier
+) {
+    val words = text.split(Regex("(?<=\\s)|(?=\\s)")) // Split keeping spaces
+
+    val annotatedString = buildAnnotatedString {
+        words.forEachIndexed { index, word ->
+            val isHighlighted = highlightedIndices.contains(index)
+
+            if (word.isBlank()) {
+                append(word)
+            } else {
+                pushStringAnnotation(tag = "word", annotation = index.toString())
+                withStyle(
+                    style = SpanStyle(
+                        background = if (isHighlighted) HighlightYellow else Color.Transparent,
+                        color = textColor
+                    )
+                ) {
+                    append(word)
+                }
+                pop()
+            }
+        }
+    }
+
+    if (highlightEnabled) {
+        ClickableText(
+            text = annotatedString,
+            style = style,
+            modifier = modifier,
+            onClick = { offset ->
+                annotatedString.getStringAnnotations(tag = "word", start = offset, end = offset)
+                    .firstOrNull()?.let { annotation ->
+                        onWordClick(annotation.item.toInt())
+                    }
+            }
+        )
+    } else {
+        Text(
+            text = annotatedString,
+            style = style,
+            modifier = modifier
+        )
+    }
+}
+
+@Composable
+fun HighlightablePassageCard(
+    passage: String,
+    highlightedIndices: Set<Int>,
+    onWordClick: (Int) -> Unit,
+    highlightEnabled: Boolean,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = IceBlue
+        ),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        HighlightableText(
+            text = passage,
+            highlightedIndices = highlightedIndices,
+            onWordClick = onWordClick,
+            highlightEnabled = highlightEnabled,
+            style = MaterialTheme.typography.bodyLarge,
+            textColor = NavyBlueDark,
+            modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Composable
+fun HighlightableQuestionCard(
+    question: String,
+    highlightedIndices: Set<Int>,
+    onWordClick: (Int) -> Unit,
+    highlightEnabled: Boolean,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        ),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        HighlightableText(
+            text = question,
+            highlightedIndices = highlightedIndices,
+            onWordClick = onWordClick,
+            highlightEnabled = highlightEnabled,
+            style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
+            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Composable
+fun HighlightableHintsCard(
+    hints: List<String>,
+    highlightedIndices: Map<Int, Set<Int>>, // Map of hint index to highlighted word indices
+    onWordClick: (hintIndex: Int, wordIndex: Int) -> Unit,
+    highlightEnabled: Boolean,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = PenguinYellow.copy(alpha = 0.2f)),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Text(
+                text = "Hinweise:",
+                style = MaterialTheme.typography.labelLarge,
+                color = PenguinOrange
+            )
+            hints.forEachIndexed { hintIndex, hint ->
+                Row(
+                    modifier = Modifier.padding(start = 8.dp, top = 4.dp)
+                ) {
+                    Text(
+                        text = "• ",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    HighlightableText(
+                        text = hint,
+                        highlightedIndices = highlightedIndices[hintIndex] ?: emptySet(),
+                        onWordClick = { wordIndex -> onWordClick(hintIndex, wordIndex) },
+                        highlightEnabled = highlightEnabled,
+                        style = MaterialTheme.typography.bodyMedium,
+                        textColor = NavyBlueDark
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun HighlightableModelAnswerCard(
+    modelAnswer: String,
+    highlightedIndices: Set<Int>,
+    onWordClick: (Int) -> Unit,
+    highlightEnabled: Boolean,
+    isVisible: Boolean,
+    onShowAnswer: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        if (!isVisible) {
+            OutlinedButton(
+                onClick = onShowAnswer,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text("Musterantwort zeigen")
+            }
+        } else {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = CorrectGreenLight
+                ),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = "Musterantwort:",
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = CorrectGreen
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    HighlightableText(
+                        text = modelAnswer,
+                        highlightedIndices = highlightedIndices,
+                        onWordClick = onWordClick,
+                        highlightEnabled = highlightEnabled,
+                        style = MaterialTheme.typography.bodyMedium,
+                        textColor = NavyBlueDark
+                    )
+                }
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@ import com.penguinlearner.ui.components.*
 import com.penguinlearner.ui.theme.*
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InferenceScreen(
     contentRepository: ContentRepository,
@@ -31,6 +32,20 @@ fun InferenceScreen(
     var showModelAnswer by remember { mutableStateOf(false) }
     var hasAnswered by remember { mutableStateOf(false) }
     val results by progressRepository.inferenceResults.collectAsState(initial = emptyMap())
+
+    // Highlighter state
+    var highlightEnabled by remember { mutableStateOf(false) }
+    var passageHighlights by remember { mutableStateOf<Set<Int>>(emptySet()) }
+    var questionHighlights by remember { mutableStateOf<Set<Int>>(emptySet()) }
+    var hintsHighlights by remember { mutableStateOf<Map<Int, Set<Int>>>(emptyMap()) }
+    var modelAnswerHighlights by remember { mutableStateOf<Set<Int>>(emptySet()) }
+
+    fun clearHighlights() {
+        passageHighlights = emptySet()
+        questionHighlights = emptySet()
+        hintsHighlights = emptyMap()
+        modelAnswerHighlights = emptySet()
+    }
 
     LaunchedEffect(Unit) {
         questions = contentRepository.loadInferenceQuestions()
@@ -63,12 +78,22 @@ fun InferenceScreen(
                 .weight(1f)
                 .verticalScroll(rememberScrollState())
         ) {
-            // Section title
-            Text(
-                text = "Schlussfolgerung",
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.primary
-            )
+            // Section title with highlighter toggle
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Schlussfolgerung",
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.primary
+                )
+                HighlighterToggle(
+                    isEnabled = highlightEnabled,
+                    onToggle = { highlightEnabled = !highlightEnabled }
+                )
+            }
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -91,12 +116,34 @@ fun InferenceScreen(
             }
 
             // Passage
-            PassageCard(passage = currentQuestion.passage)
+            HighlightablePassageCard(
+                passage = currentQuestion.passage,
+                highlightedIndices = passageHighlights,
+                onWordClick = { index ->
+                    passageHighlights = if (passageHighlights.contains(index)) {
+                        passageHighlights - index
+                    } else {
+                        passageHighlights + index
+                    }
+                },
+                highlightEnabled = highlightEnabled
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Question
-            QuestionCard(question = currentQuestion.question)
+            HighlightableQuestionCard(
+                question = currentQuestion.question,
+                highlightedIndices = questionHighlights,
+                onWordClick = { index ->
+                    questionHighlights = if (questionHighlights.contains(index)) {
+                        questionHighlights - index
+                    } else {
+                        questionHighlights + index
+                    }
+                },
+                highlightEnabled = highlightEnabled
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -128,33 +175,35 @@ fun InferenceScreen(
                         Text("Hinweise anzeigen")
                     }
                 } else {
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(containerColor = PenguinYellow.copy(alpha = 0.2f)),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Column(modifier = Modifier.padding(12.dp)) {
-                            Text(
-                                text = "Hinweise:",
-                                style = MaterialTheme.typography.labelLarge,
-                                color = PenguinOrange
-                            )
-                            currentQuestion.hints.forEach { hint ->
-                                Text(
-                                    text = "• $hint",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    modifier = Modifier.padding(start = 8.dp, top = 4.dp)
-                                )
+                    HighlightableHintsCard(
+                        hints = currentQuestion.hints,
+                        highlightedIndices = hintsHighlights,
+                        onWordClick = { hintIndex, wordIndex ->
+                            val currentHintHighlights = hintsHighlights[hintIndex] ?: emptySet()
+                            hintsHighlights = if (currentHintHighlights.contains(wordIndex)) {
+                                hintsHighlights + (hintIndex to (currentHintHighlights - wordIndex))
+                            } else {
+                                hintsHighlights + (hintIndex to (currentHintHighlights + wordIndex))
                             }
-                        }
-                    }
+                        },
+                        highlightEnabled = highlightEnabled
+                    )
                 }
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
             // Model answer
-            ModelAnswerCard(
+            HighlightableModelAnswerCard(
                 modelAnswer = currentQuestion.modelAnswer,
+                highlightedIndices = modelAnswerHighlights,
+                onWordClick = { index ->
+                    modelAnswerHighlights = if (modelAnswerHighlights.contains(index)) {
+                        modelAnswerHighlights - index
+                    } else {
+                        modelAnswerHighlights + index
+                    }
+                },
+                highlightEnabled = highlightEnabled,
                 isVisible = showModelAnswer,
                 onShowAnswer = { showModelAnswer = true }
             )
@@ -194,6 +243,7 @@ fun InferenceScreen(
                     userAnswer = ""
                     showModelAnswer = false
                     hasAnswered = false
+                    clearHighlights()
                 }
             },
             onNext = {
@@ -202,6 +252,7 @@ fun InferenceScreen(
                     userAnswer = ""
                     showModelAnswer = false
                     hasAnswered = false
+                    clearHighlights()
                 }
             },
             isPreviousEnabled = currentIndex > 0,
