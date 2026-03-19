@@ -11,6 +11,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Flip
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material3.*
@@ -41,7 +42,8 @@ enum class VocabularyMode {
 @Composable
 fun VocabularyScreen(
     contentRepository: ContentRepository,
-    progressRepository: ProgressRepository
+    progressRepository: ProgressRepository,
+    onNavigateBack: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     var vocabulary by remember { mutableStateOf<List<VocabularyItem>>(emptyList()) }
@@ -69,6 +71,18 @@ fun VocabularyScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Back button
+        IconButton(
+            onClick = onNavigateBack,
+            modifier = Modifier.offset(x = (-12).dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Zurück",
+                tint = NavyBlue
+            )
+        }
+
         // Mode Toggle
         Row(
             modifier = Modifier.fillMaxWidth(),

@@ -6,6 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -27,7 +28,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun RetrievalScreen(
     contentRepository: ContentRepository,
-    progressRepository: ProgressRepository
+    progressRepository: ProgressRepository,
+    onNavigateBack: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     var questions by remember { mutableStateOf<List<RetrievalQuestion>>(emptyList()) }
@@ -55,6 +57,18 @@ fun RetrievalScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Back button
+        IconButton(
+            onClick = onNavigateBack,
+            modifier = Modifier.offset(x = (-12).dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Zurück",
+                tint = NavyBlue
+            )
+        }
+
         // Score header
         Card(
             modifier = Modifier.fillMaxWidth(),

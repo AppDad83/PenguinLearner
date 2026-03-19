@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -25,7 +26,8 @@ import com.penguinlearner.ui.theme.*
 
 @Composable
 fun ChaptersScreen(
-    contentRepository: ContentRepository
+    contentRepository: ContentRepository,
+    onNavigateBack: () -> Unit
 ) {
     var chapters by remember { mutableStateOf<List<Chapter>>(emptyList()) }
     var expandedChapter by remember { mutableStateOf<Int?>(null) }
@@ -44,6 +46,18 @@ fun ChaptersScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Back button
+        IconButton(
+            onClick = onNavigateBack,
+            modifier = Modifier.offset(x = (-12).dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Zurück",
+                tint = NavyBlue
+            )
+        }
+
         // Header
         Card(
             modifier = Modifier.fillMaxWidth(),
