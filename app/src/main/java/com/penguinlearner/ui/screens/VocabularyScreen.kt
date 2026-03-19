@@ -290,31 +290,33 @@ private fun FillBlankContent(
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Word being tested
+        // German translation as hint (English word is hidden - user must type it)
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(containerColor = NavyBlue),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Text(
-                text = item.englishWord,
+            Column(
                 modifier = Modifier
                     .padding(20.dp)
                     .fillMaxWidth(),
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                color = PenguinWhite,
-                textAlign = TextAlign.Center
-            )
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Übersetze:",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = PenguinYellow
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = item.germanTranslation,
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = PenguinWhite,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Text(
-            text = item.germanTranslation,
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
 
         Spacer(modifier = Modifier.height(24.dp))
 
