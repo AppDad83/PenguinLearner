@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DragHandle
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -41,7 +42,8 @@ import kotlin.math.roundToInt
 @Composable
 fun SequencingScreen(
     contentRepository: ContentRepository,
-    progressRepository: ProgressRepository
+    progressRepository: ProgressRepository,
+    onNavigateBack: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     var exercises by remember { mutableStateOf<List<SequencingExercise>>(emptyList()) }
@@ -89,6 +91,18 @@ fun SequencingScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Back button
+        IconButton(
+            onClick = onNavigateBack,
+            modifier = Modifier.offset(x = (-12).dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Zurück",
+                tint = NavyBlue
+            )
+        }
+
         // Progress
         ProgressHeader(
             current = currentIndex + 1,

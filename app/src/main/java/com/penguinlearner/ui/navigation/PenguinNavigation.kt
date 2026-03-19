@@ -8,6 +8,18 @@ import com.penguinlearner.data.repository.ContentRepository
 import com.penguinlearner.data.repository.ProgressRepository
 import com.penguinlearner.ui.screens.*
 
+object NavRoutes {
+    const val HOME = "home"
+    const val VOCABULARY = "vocabulary"
+    const val GRAMMAR = "grammar"
+    const val INFERENCE = "inference"
+    const val PREDICTION = "prediction"
+    const val EXPLANATION = "explanation"
+    const val RETRIEVAL = "retrieval"
+    const val SEQUENCING = "sequencing"
+    const val CHAPTERS = "chapters"
+}
+
 @Composable
 fun PenguinNavHost(
     navController: NavHostController,
@@ -16,60 +28,84 @@ fun PenguinNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = BottomNavItem.Vocabulary.route
+        startDestination = NavRoutes.HOME
     ) {
-        composable(BottomNavItem.Vocabulary.route) {
+        composable(NavRoutes.HOME) {
+            HomeScreen(
+                onNavigateToVocabulary = { navController.navigate(NavRoutes.VOCABULARY) },
+                onNavigateToGrammar = { navController.navigate(NavRoutes.GRAMMAR) },
+                onNavigateToInference = { navController.navigate(NavRoutes.INFERENCE) },
+                onNavigateToPrediction = { navController.navigate(NavRoutes.PREDICTION) },
+                onNavigateToExplanation = { navController.navigate(NavRoutes.EXPLANATION) },
+                onNavigateToRetrieval = { navController.navigate(NavRoutes.RETRIEVAL) },
+                onNavigateToSequencing = { navController.navigate(NavRoutes.SEQUENCING) },
+                onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
+            )
+        }
+
+        composable(NavRoutes.VOCABULARY) {
             VocabularyScreen(
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(BottomNavItem.Grammar.route) {
+        composable(NavRoutes.GRAMMAR) {
             GrammarScreen(
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(BottomNavItem.Inference.route) {
+        composable(NavRoutes.INFERENCE) {
             InferenceScreen(
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
             )
         }
 
-        composable(BottomNavItem.Prediction.route) {
+        composable(NavRoutes.PREDICTION) {
             PredictionScreen(
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
             )
         }
 
-        composable(BottomNavItem.Explanation.route) {
+        composable(NavRoutes.EXPLANATION) {
             ExplanationScreen(
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
             )
         }
 
-        composable(BottomNavItem.Retrieval.route) {
+        composable(NavRoutes.RETRIEVAL) {
             RetrievalScreen(
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(BottomNavItem.Sequencing.route) {
+        composable(NavRoutes.SEQUENCING) {
             SequencingScreen(
                 contentRepository = contentRepository,
-                progressRepository = progressRepository
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() }
             )
         }
 
-        composable(BottomNavItem.Chapters.route) {
+        composable(NavRoutes.CHAPTERS) {
             ChaptersScreen(
-                contentRepository = contentRepository
+                contentRepository = contentRepository,
+                onNavigateBack = { navController.popBackStack() }
             )
         }
     }

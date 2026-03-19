@@ -5,6 +5,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Book
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -23,7 +26,9 @@ import kotlinx.coroutines.launch
 @Composable
 fun InferenceScreen(
     contentRepository: ContentRepository,
-    progressRepository: ProgressRepository
+    progressRepository: ProgressRepository,
+    onNavigateBack: () -> Unit,
+    onNavigateToChapters: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     var questions by remember { mutableStateOf<List<InferenceQuestion>>(emptyList()) }
@@ -64,6 +69,33 @@ fun InferenceScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Top bar with back and chapters buttons
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(
+                onClick = onNavigateBack,
+                modifier = Modifier.offset(x = (-12).dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Zurück",
+                    tint = NavyBlue
+                )
+            }
+            TextButton(onClick = onNavigateToChapters) {
+                Icon(
+                    imageVector = Icons.Default.Book,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Text("Kapitel")
+            }
+        }
+
         // Progress
         ProgressHeader(
             current = currentIndex + 1,

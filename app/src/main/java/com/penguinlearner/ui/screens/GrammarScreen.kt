@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -33,7 +35,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun GrammarScreen(
     contentRepository: ContentRepository,
-    progressRepository: ProgressRepository
+    progressRepository: ProgressRepository,
+    onNavigateBack: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     var exercises by remember { mutableStateOf<List<GrammarExercise>>(emptyList()) }
@@ -59,6 +62,18 @@ fun GrammarScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Back button
+        IconButton(
+            onClick = onNavigateBack,
+            modifier = Modifier.offset(x = (-12).dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Zurück",
+                tint = NavyBlue
+            )
+        }
+
         // Progress
         ProgressHeader(
             current = currentIndex + 1,
