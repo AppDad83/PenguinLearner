@@ -122,7 +122,7 @@
         {"word": "Stillwater", "isCorrect": true, "startIndex": 70, "endIndex": 80},
         {"word": "Mr. Popper", "isCorrect": true, "startIndex": 82, "endIndex": 92},
         {"word": "the", "isCorrect": false, "startIndex": 94, "endIndex": 97},
-        {"word": "house", "isCorrect": false, "startIndex": 98, "endIndex": 103},
+        {"word": "house", "isCorrect": true, "startIndex": 98, "endIndex": 103},
         {"word": "painter", "isCorrect": true, "startIndex": 104, "endIndex": 111},
         {"word": "was", "isCorrect": false, "startIndex": 113, "endIndex": 116},
         {"word": "going", "isCorrect": false, "startIndex": 117, "endIndex": 122},
