@@ -49,12 +49,6 @@
       "chapter": "IV"
     },
     {
-      "question": "How many air holes did the service man drill in the refrigerator door?",
-      "options": ["One", "Three", "Five", "Ten"],
-      "answer": "Five",
-      "chapter": "V"
-    },
-    {
       "question": "What did the policeman first think Captain Cook was?",
       "options": ["A lion", "A giant parrot", "A goose", "A dog"],
       "answer": "A giant parrot",
@@ -67,22 +61,10 @@
       "chapter": "VIII"
     },
     {
-      "question": "What was Captain Cook's temperature when he was very sick?",
-      "options": ["98 degrees", "100 degrees", "104 degrees", "108 degrees"],
-      "answer": "104 degrees",
-      "chapter": "X"
-    },
-    {
       "question": "Where did the second penguin, Greta, come from?",
       "options": ["The South Pole", "The North Pole", "Mammoth City Aquarium", "London Zoo"],
       "answer": "Mammoth City Aquarium",
       "chapter": "XI"
-    },
-    {
-      "question": "How many eggs did Greta lay in total?",
-      "options": ["Two", "Five", "Ten", "Twelve"],
-      "answer": "Ten",
-      "chapter": "XII"
     },
     {
       "question": "Which two penguins usually get into a fight with each other?",
@@ -92,20 +74,14 @@
     },
     {
       "question": "What is the name of the penguin theater act?",
-      "options": ["The Flying Birds", "Popper’s Performing Penguins", "Drake’s Divers", "Stillwater Stars"],
-      "answer": "Popper’s Performing Penguins",
+      "options": ["The Flying Birds", "Popper's Performing Penguins", "Drake's Divers", "Stillwater Stars"],
+      "answer": "Popper's Performing Penguins",
       "chapter": "XIV"
     },
     {
       "question": "What song did Mrs. Popper play for the penguin marching drill?",
       "options": ["Merry Widow Waltz", "Military March", "By the Brook", "Happy Birthday"],
       "answer": "Military March",
-      "chapter": "XV"
-    },
-    {
-      "question": "How much money per week did the penguins earn on their contract?",
-      "options": ["$50", "$500", "$1,000", "$5,000"],
-      "answer": "$5,000",
       "chapter": "XV"
     },
     {
