@@ -3,133 +3,21 @@
     {
       "id": 1,
       "question": "What is Mr. Popper's job?",
-      "options": ["Teacher", "House painter", "Zookeeper", "Ship captain"],
-      "correctAnswerIndex": 1,
-      "explanation": "Mr. Popper works as a house painter, but only during the warmer months when paint can dry properly.",
+      "options": ["Explorer", "Scientist", "House painter", "Bus driver"],
+      "correctAnswerIndex": 2,
+      "explanation": "Mr. Popper works as a house painter in the town of Stillwater.",
       "chapter": "Chapter 1"
     },
     {
       "id": 2,
-      "question": "Where does the first penguin come from?",
-      "options": ["A pet store", "The zoo", "Admiral Drake in Antarctica", "A circus"],
-      "correctAnswerIndex": 2,
-      "explanation": "Admiral Drake sends Captain Cook to Mr. Popper as a gift from his expedition in Antarctica.",
-      "chapter": "Chapter 2"
-    },
-    {
-      "id": 3,
-      "question": "What is the name of the first penguin?",
-      "options": ["Admiral Drake", "Captain Cook", "Mr. Penguin", "Popper"],
+      "question": "Where does Mr. Popper live?",
+      "options": ["New York", "Stillwater", "Chicago", "London"],
       "correctAnswerIndex": 1,
-      "explanation": "Mr. Popper names the penguin Captain Cook, after the famous explorer.",
-      "chapter": "Chapter 3"
-    },
-    {
-      "id": 4,
-      "question": "What does Captain Cook like to eat?",
-      "options": ["Bread and milk", "Crackers", "Fish", "Ice cream"],
-      "correctAnswerIndex": 2,
-      "explanation": "Like all penguins, Captain Cook eats fish. Mr. Popper had to buy fish from the market.",
-      "chapter": "Chapter 3"
-    },
-    {
-      "id": 5,
-      "question": "Where does Captain Cook like to sleep?",
-      "options": ["In a bed", "In the refrigerator", "On the sofa", "In the bathtub"],
-      "correctAnswerIndex": 1,
-      "explanation": "Captain Cook sleeps in the refrigerator because penguins need cold temperatures.",
-      "chapter": "Chapter 4"
-    },
-    {
-      "id": 6,
-      "question": "What is the name of the female penguin sent to be Captain Cook's companion?",
-      "options": ["Mrs. Cook", "Greta", "Anna", "Penny"],
-      "correctAnswerIndex": 1,
-      "explanation": "Greta is sent from an aquarium to be Captain Cook's companion when he becomes lonely.",
-      "chapter": "Chapter 7"
-    },
-    {
-      "id": 7,
-      "question": "How many baby penguins do Captain Cook and Greta have?",
-      "options": ["Two", "Five", "Ten", "Twelve"],
-      "correctAnswerIndex": 2,
-      "explanation": "Captain Cook and Greta have ten baby penguins, making the total twelve penguins.",
-      "chapter": "Chapter 9"
-    },
-    {
-      "id": 8,
-      "question": "What do the Poppers do to make money with the penguins?",
-      "options": ["Sell them to a zoo", "Put on performing shows", "Sell penguin eggs", "Open a penguin restaurant"],
-      "correctAnswerIndex": 1,
-      "explanation": "The Poppers train the penguins to perform tricks and they travel to theaters putting on shows.",
-      "chapter": "Chapter 14"
-    },
-    {
-      "id": 9,
-      "question": "What is the name of the town where the Poppers live?",
-      "options": ["Penguinville", "Stillwater", "Coldtown", "Frostburg"],
-      "correctAnswerIndex": 1,
-      "explanation": "The Popper family lives in the town of Stillwater.",
+      "explanation": "Mr. Popper and his family live in the town of Stillwater.",
       "chapter": "Chapter 1"
     },
     {
-      "id": 10,
-      "question": "Where do the penguins go at the end of the story?",
-      "options": ["Stay with the Poppers", "Go to a zoo", "Go to the North Pole", "Return to the aquarium"],
-      "correctAnswerIndex": 2,
-      "explanation": "Admiral Drake takes the penguins to the North Pole to start a new penguin colony there.",
-      "chapter": "Chapter 20"
-    },
-    {
-      "id": 11,
-      "question": "Why was Captain Cook sad and not eating?",
-      "options": ["He was sick", "He was lonely", "He didn't like the food", "He was too cold"],
-      "correctAnswerIndex": 1,
-      "explanation": "Captain Cook was lonely because penguins are social animals. He needed another penguin for company.",
-      "chapter": "Chapter 6"
-    },
-    {
-      "id": 12,
-      "question": "What did Mr. Popper do to keep the penguins cool in the house?",
-      "options": ["Bought a swimming pool", "Kept all windows open", "Installed a freezing plant", "Moved to Antarctica"],
-      "correctAnswerIndex": 2,
-      "explanation": "Mr. Popper had a freezing plant installed in the basement to keep the house cold enough for twelve penguins.",
-      "chapter": "Chapter 10"
-    },
-    {
-      "id": 13,
-      "question": "What kind of food did the penguins eat while traveling on tour?",
-      "options": ["Fresh salmon", "Canned shrimps", "Frozen fish", "Live sardines"],
-      "correctAnswerIndex": 1,
-      "explanation": "While on the road, the penguins ate canned shrimps because they were easier to transport than fresh fish.",
-      "chapter": "Chapter 17"
-    },
-    {
-      "id": 14,
-      "question": "What is the name of the penguin theater act?",
-      "options": ["The Flying Birds", "Popper's Performing Penguins", "Drake's Divers", "Stillwater Stars"],
-      "correctAnswerIndex": 1,
-      "explanation": "The act was called 'Popper's Performing Penguins' and became famous across the country.",
-      "chapter": "Chapter 14"
-    },
-    {
-      "id": 15,
-      "question": "What song did Mrs. Popper play for the penguin drill?",
-      "options": ["Merry Widow Waltz", "Military March", "By the Brook", "Happy Birthday"],
-      "correctAnswerIndex": 1,
-      "explanation": "Mrs. Popper played the 'Military March' on the piano while the penguins marched in formation.",
-      "chapter": "Chapter 15"
-    },
-    {
-      "id": 16,
-      "question": "What happens to Mr. Popper at the end of the book?",
-      "options": ["He stays home to paint houses", "He goes to the North Pole with the penguins", "He becomes a zoo keeper", "He opens a fish restaurant"],
-      "correctAnswerIndex": 1,
-      "explanation": "Mr. Popper decides to join Admiral Drake's expedition and go to the North Pole with his beloved penguins.",
-      "chapter": "Chapter 20"
-    },
-    {
-      "id": 17,
+      "id": 3,
       "question": "What is the name of the street where the Poppers live?",
       "options": ["Elm Street", "Proudfoot Avenue", "Main Street", "South Pole Road"],
       "correctAnswerIndex": 1,
@@ -137,7 +25,7 @@
       "chapter": "Chapter 1"
     },
     {
-      "id": 18,
+      "id": 4,
       "question": "What is the title of the book Mr. Popper reads in Chapter II?",
       "options": ["Arctic Adventures", "Antarctic Adventures", "The Life of Penguins", "Admiral Drake's Journey"],
       "correctAnswerIndex": 1,
@@ -145,7 +33,31 @@
       "chapter": "Chapter 2"
     },
     {
-      "id": 19,
+      "id": 5,
+      "question": "Who sent the first penguin to Mr. Popper?",
+      "options": ["Dr. Smith", "Mr. Greenbaum", "Admiral Drake", "Mrs. Callahan"],
+      "correctAnswerIndex": 2,
+      "explanation": "Admiral Drake sends Captain Cook to Mr. Popper as a gift from his expedition in Antarctica.",
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 6,
+      "question": "What was the name of the first penguin?",
+      "options": ["Captain Cook", "Admiral Drake", "Greta", "Nelson"],
+      "correctAnswerIndex": 0,
+      "explanation": "Mr. Popper names the penguin Captain Cook, after the famous explorer.",
+      "chapter": "Chapter 3"
+    },
+    {
+      "id": 7,
+      "question": "Where do the penguins sleep in the Popper house at first?",
+      "options": ["In the bathtub", "In the cellar", "In the refrigerator", "In the garden"],
+      "correctAnswerIndex": 2,
+      "explanation": "Captain Cook sleeps in the refrigerator because penguins need cold temperatures.",
+      "chapter": "Chapter 4"
+    },
+    {
+      "id": 8,
       "question": "What did Captain Cook eat in the dining room that made Mrs. Popper angry?",
       "options": ["Beans", "Goldfish", "Shrimps", "Apples"],
       "correctAnswerIndex": 1,
@@ -153,15 +65,7 @@
       "chapter": "Chapter 4"
     },
     {
-      "id": 20,
-      "question": "How many air holes did the service man drill in the refrigerator door?",
-      "options": ["One", "Three", "Five", "Ten"],
-      "correctAnswerIndex": 2,
-      "explanation": "The service man drilled five air holes in the refrigerator door so Captain Cook could breathe while sleeping inside.",
-      "chapter": "Chapter 5"
-    },
-    {
-      "id": 21,
+      "id": 9,
       "question": "What did the policeman first think Captain Cook was?",
       "options": ["A lion", "A giant parrot", "A goose", "A dog"],
       "correctAnswerIndex": 1,
@@ -169,7 +73,7 @@
       "chapter": "Chapter 6"
     },
     {
-      "id": 22,
+      "id": 10,
       "question": "What did Mr. Popper use as a leash for Captain Cook?",
       "options": ["A leather strap", "A chain", "A clothesline", "A ribbon"],
       "correctAnswerIndex": 2,
@@ -177,15 +81,15 @@
       "chapter": "Chapter 8"
     },
     {
-      "id": 23,
-      "question": "What was Captain Cook's temperature when he was very sick?",
-      "options": ["98 degrees", "100 degrees", "104 degrees", "108 degrees"],
+      "id": 11,
+      "question": "Where did the second penguin, Greta, come from?",
+      "options": ["The South Pole", "The North Pole", "Mammoth City Aquarium", "London Zoo"],
       "correctAnswerIndex": 2,
-      "explanation": "When Captain Cook was very ill, his temperature rose to 104 degrees, which worried the Poppers greatly.",
-      "chapter": "Chapter 10"
+      "explanation": "Greta is sent from Mammoth City Aquarium to be Captain Cook's companion when he becomes lonely.",
+      "chapter": "Chapter 11"
     },
     {
-      "id": 24,
+      "id": 12,
       "question": "Which two penguins usually get into a fight with each other?",
       "options": ["Captain Cook and Greta", "Nelson and Columbus", "Scott and Magellan", "Janie and Bill"],
       "correctAnswerIndex": 1,
@@ -193,23 +97,31 @@
       "chapter": "Chapter 13"
     },
     {
-      "id": 25,
-      "question": "How much money per week did the penguins earn on their contract?",
-      "options": ["$50", "$500", "$1,000", "$5,000"],
-      "correctAnswerIndex": 3,
-      "explanation": "The penguins earned $5,000 per week on their theater contract, which was a huge amount of money.",
+      "id": 13,
+      "question": "What is the name of the penguin theater act?",
+      "options": ["The Flying Birds", "Popper's Performing Penguins", "Drake's Divers", "Stillwater Stars"],
+      "correctAnswerIndex": 1,
+      "explanation": "The act was called 'Popper's Performing Penguins' and became famous across the country.",
+      "chapter": "Chapter 14"
+    },
+    {
+      "id": 14,
+      "question": "What song did Mrs. Popper play for the penguin marching drill?",
+      "options": ["Merry Widow Waltz", "Military March", "By the Brook", "Happy Birthday"],
+      "correctAnswerIndex": 1,
+      "explanation": "Mrs. Popper played the 'Military March' on the piano while the penguins marched in formation.",
       "chapter": "Chapter 15"
     },
     {
-      "id": 26,
+      "id": 15,
       "question": "Why was Mr. Popper arrested in New York?",
-      "options": ["For not having a license", "For going to the wrong theater", "For stealing fish", "For walking on the roof"],
+      "options": ["For not having a license", "For going to the wrong theater (Regal)", "For stealing fish", "For walking on the roof"],
       "correctAnswerIndex": 1,
       "explanation": "Mr. Popper was arrested because he accidentally went to the wrong theater (the Regal) instead of the Royal.",
       "chapter": "Chapter 19"
     },
     {
-      "id": 27,
+      "id": 16,
       "question": "Who offered Mr. Popper a contract to put the penguins in movies?",
       "options": ["Admiral Drake", "Mr. Greenbaum", "Mr. Klein", "The Mayor"],
       "correctAnswerIndex": 2,
