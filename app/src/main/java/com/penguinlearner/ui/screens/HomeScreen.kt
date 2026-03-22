@@ -34,7 +34,10 @@ fun HomeScreen(
     onNavigateToExplanation: () -> Unit,
     onNavigateToRetrieval: () -> Unit,
     onNavigateToSequencing: () -> Unit,
-    onNavigateToChapters: () -> Unit
+    onNavigateToChapters: () -> Unit,
+    onNavigateToInferenceQuiz: () -> Unit,
+    onNavigateToPredictionQuiz: () -> Unit,
+    onNavigateToExplanationQuiz: () -> Unit
 ) {
     // Load content counts
     var vocabularyTotal by remember { mutableIntStateOf(0) }
@@ -44,6 +47,9 @@ fun HomeScreen(
     var explanationTotal by remember { mutableIntStateOf(0) }
     var retrievalTotal by remember { mutableIntStateOf(0) }
     var sequencingTotal by remember { mutableIntStateOf(0) }
+    var inferenceQuizTotal by remember { mutableIntStateOf(0) }
+    var predictionQuizTotal by remember { mutableIntStateOf(0) }
+    var explanationQuizTotal by remember { mutableIntStateOf(0) }
 
     LaunchedEffect(Unit) {
         vocabularyTotal = contentRepository.loadVocabulary().size
@@ -53,6 +59,9 @@ fun HomeScreen(
         explanationTotal = contentRepository.loadExplanationQuestions().size
         retrievalTotal = contentRepository.loadRetrievalQuestions().size
         sequencingTotal = contentRepository.loadSequencingExercises().size
+        inferenceQuizTotal = contentRepository.loadInferenceQuiz().size
+        predictionQuizTotal = contentRepository.loadPredictionQuiz().size
+        explanationQuizTotal = contentRepository.loadExplanationQuiz().size
     }
 
     // Collect progress
@@ -63,6 +72,9 @@ fun HomeScreen(
     val explanationResults by progressRepository.explanationResults.collectAsState(initial = emptyMap())
     val retrievalProgress by progressRepository.retrievalProgress.collectAsState(initial = Pair(0, 0))
     val completedSequencing by progressRepository.completedSequencingIds.collectAsState(initial = emptySet())
+    val inferenceQuizProgress by progressRepository.inferenceQuizProgress.collectAsState(initial = Pair(0, 0))
+    val predictionQuizProgress by progressRepository.predictionQuizProgress.collectAsState(initial = Pair(0, 0))
+    val explanationQuizProgress by progressRepository.explanationQuizProgress.collectAsState(initial = Pair(0, 0))
 
     // Calculate stars for each section (0-3 stars based on percentage)
     val vocabularyStars = calculateStars(learnedVocabulary.size, vocabularyTotal)
@@ -72,11 +84,15 @@ fun HomeScreen(
     val explanationStars = calculateStars(explanationResults.count { it.value }, explanationTotal)
     val retrievalStars = calculateStars(retrievalProgress.first, retrievalTotal)
     val sequencingStars = calculateStars(completedSequencing.size, sequencingTotal)
+    val inferenceQuizStars = calculateStars(inferenceQuizProgress.first, inferenceQuizTotal)
+    val predictionQuizStars = calculateStars(predictionQuizProgress.first, predictionQuizTotal)
+    val explanationQuizStars = calculateStars(explanationQuizProgress.first, explanationQuizTotal)
 
-    // Total stars (max 21 = 7 exercises * 3 stars each)
+    // Total stars (max 30 = 10 exercises * 3 stars each)
     val totalStars = vocabularyStars + grammarStars + inferenceStars +
-                     predictionStars + explanationStars + retrievalStars + sequencingStars
-    val maxStars = 21
+                     predictionStars + explanationStars + retrievalStars + sequencingStars +
+                     inferenceQuizStars + predictionQuizStars + explanationQuizStars
+    val maxStars = 30
 
     Column(
         modifier = Modifier
@@ -190,39 +206,87 @@ fun HomeScreen(
         SectionHeader(title = "Leseverständnis")
         Spacer(modifier = Modifier.height(12.dp))
 
-        ExerciseCard(
-            title = "Schlussfolgerung",
-            subtitle = "Was bedeutet der Text?",
-            icon = Icons.Default.Search,
-            stars = inferenceStars,
-            completed = inferenceResults.count { it.value },
-            total = inferenceTotal,
-            onClick = onNavigateToInference
-        )
+        // Inference Row
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            ExerciseCardCompact(
+                title = "Schlussfolgerung",
+                subtitle = "Freitext",
+                icon = Icons.Default.Search,
+                stars = inferenceStars,
+                completed = inferenceResults.count { it.value },
+                total = inferenceTotal,
+                onClick = onNavigateToInference,
+                modifier = Modifier.weight(1f)
+            )
+            QuizCard(
+                title = "Inference Quiz",
+                icon = Icons.Default.Search,
+                stars = inferenceQuizStars,
+                completed = inferenceQuizProgress.first,
+                total = inferenceQuizTotal,
+                onClick = onNavigateToInferenceQuiz,
+                modifier = Modifier.weight(1f)
+            )
+        }
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        ExerciseCard(
-            title = "Vorhersage",
-            subtitle = "Was passiert als nächstes?",
-            icon = Icons.Default.AutoAwesome,
-            stars = predictionStars,
-            completed = predictionResults.count { it.value },
-            total = predictionTotal,
-            onClick = onNavigateToPrediction
-        )
+        // Prediction Row
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            ExerciseCardCompact(
+                title = "Vorhersage",
+                subtitle = "Freitext",
+                icon = Icons.Default.AutoAwesome,
+                stars = predictionStars,
+                completed = predictionResults.count { it.value },
+                total = predictionTotal,
+                onClick = onNavigateToPrediction,
+                modifier = Modifier.weight(1f)
+            )
+            QuizCard(
+                title = "Prediction Quiz",
+                icon = Icons.Default.AutoAwesome,
+                stars = predictionQuizStars,
+                completed = predictionQuizProgress.first,
+                total = predictionQuizTotal,
+                onClick = onNavigateToPredictionQuiz,
+                modifier = Modifier.weight(1f)
+            )
+        }
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        ExerciseCard(
-            title = "Erklärung",
-            subtitle = "Erkläre mit eigenen Worten",
-            icon = Icons.Default.Chat,
-            stars = explanationStars,
-            completed = explanationResults.count { it.value },
-            total = explanationTotal,
-            onClick = onNavigateToExplanation
-        )
+        // Explanation Row
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            ExerciseCardCompact(
+                title = "Erklärung",
+                subtitle = "Freitext",
+                icon = Icons.Default.Chat,
+                stars = explanationStars,
+                completed = explanationResults.count { it.value },
+                total = explanationTotal,
+                onClick = onNavigateToExplanation,
+                modifier = Modifier.weight(1f)
+            )
+            QuizCard(
+                title = "Explanation Quiz",
+                icon = Icons.Default.Chat,
+                stars = explanationQuizStars,
+                completed = explanationQuizProgress.first,
+                total = explanationQuizTotal,
+                onClick = onNavigateToExplanationQuiz,
+                modifier = Modifier.weight(1f)
+            )
+        }
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -436,6 +500,147 @@ private fun ExerciseMenuCard(
                 tint = PenguinWhite.copy(alpha = 0.7f),
                 modifier = Modifier.size(28.dp)
             )
+        }
+    }
+}
+
+@Composable
+private fun ExerciseCardCompact(
+    title: String,
+    subtitle: String,
+    icon: ImageVector,
+    stars: Int,
+    completed: Int,
+    total: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(12.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Surface(
+                    shape = RoundedCornerShape(8.dp),
+                    color = IceBlue,
+                    modifier = Modifier.size(36.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp),
+                            tint = NavyBlue
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.SemiBold,
+                        color = NavyBlueDark,
+                        maxLines = 1
+                    )
+                    Text(
+                        text = subtitle,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = PenguinGray
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                StarRating(stars = stars)
+                Text(
+                    text = "$completed/$total",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = PenguinGray
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun QuizCard(
+    title: String,
+    icon: ImageVector,
+    stars: Int,
+    completed: Int,
+    total: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = NavyBlueLight),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(12.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Surface(
+                    shape = RoundedCornerShape(8.dp),
+                    color = PenguinWhite.copy(alpha = 0.2f),
+                    modifier = Modifier.size(36.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp),
+                            tint = PenguinWhite
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.SemiBold,
+                        color = PenguinWhite,
+                        maxLines = 1
+                    )
+                    Text(
+                        text = "Multiple Choice",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = PenguinWhite.copy(alpha = 0.7f)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                StarRating(stars = stars)
+                Text(
+                    text = "$completed/$total",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = PenguinWhite.copy(alpha = 0.7f)
+                )
+            }
         }
     }
 }

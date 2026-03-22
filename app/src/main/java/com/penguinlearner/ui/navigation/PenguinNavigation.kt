@@ -19,6 +19,9 @@ object NavRoutes {
     const val RETRIEVAL = "retrieval"
     const val SEQUENCING = "sequencing"
     const val CHAPTERS = "chapters"
+    const val INFERENCE_QUIZ = "inference_quiz"
+    const val PREDICTION_QUIZ = "prediction_quiz"
+    const val EXPLANATION_QUIZ = "explanation_quiz"
 }
 
 @Composable
@@ -43,7 +46,10 @@ fun PenguinNavHost(
                 onNavigateToExplanation = { navController.navigate(NavRoutes.EXPLANATION) },
                 onNavigateToRetrieval = { navController.navigate(NavRoutes.RETRIEVAL) },
                 onNavigateToSequencing = { navController.navigate(NavRoutes.SEQUENCING) },
-                onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) }
+                onNavigateToChapters = { navController.navigate(NavRoutes.CHAPTERS) },
+                onNavigateToInferenceQuiz = { navController.navigate(NavRoutes.INFERENCE_QUIZ) },
+                onNavigateToPredictionQuiz = { navController.navigate(NavRoutes.PREDICTION_QUIZ) },
+                onNavigateToExplanationQuiz = { navController.navigate(NavRoutes.EXPLANATION_QUIZ) }
             )
         }
 
@@ -112,6 +118,30 @@ fun PenguinNavHost(
         composable(NavRoutes.CHAPTERS) {
             ChaptersScreen(
                 contentRepository = contentRepository,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(NavRoutes.INFERENCE_QUIZ) {
+            InferenceQuizScreen(
+                contentRepository = contentRepository,
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(NavRoutes.PREDICTION_QUIZ) {
+            PredictionQuizScreen(
+                contentRepository = contentRepository,
+                progressRepository = progressRepository,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(NavRoutes.EXPLANATION_QUIZ) {
+            ExplanationQuizScreen(
+                contentRepository = contentRepository,
+                progressRepository = progressRepository,
                 onNavigateBack = { navController.popBackStack() }
             )
         }

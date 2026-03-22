@@ -9,6 +9,36 @@ class ContentRepository(private val context: Context) {
 
     private val gson = Gson()
 
+    // Cache for quiz data (loaded once, used by all three quiz types)
+    private var quizDataCache: QuizData? = null
+
+    private fun loadQuizData(): QuizData? {
+        if (quizDataCache != null) return quizDataCache
+        return try {
+            val inputStream = context.assets.open("data/NewQuiz_Inf_Pre_Exp.json")
+            val reader = InputStreamReader(inputStream)
+            val data = gson.fromJson(reader, QuizData::class.java)
+            reader.close()
+            quizDataCache = data
+            data
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    fun loadInferenceQuiz(): List<InferenceQuizQuestion> {
+        return loadQuizData()?.inference ?: emptyList()
+    }
+
+    fun loadPredictionQuiz(): List<PredictionQuizQuestion> {
+        return loadQuizData()?.prediction ?: emptyList()
+    }
+
+    fun loadExplanationQuiz(): List<ExplanationQuizQuestion> {
+        return loadQuizData()?.explanation ?: emptyList()
+    }
+
     fun loadVocabulary(): List<VocabularyItem> {
         return try {
             val inputStream = context.assets.open("data/vocabulary.json")

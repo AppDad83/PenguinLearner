@@ -21,6 +21,14 @@ class ProgressRepository(private val context: Context) {
         private val RETRIEVAL_SCORE = intPreferencesKey("retrieval_score")
         private val RETRIEVAL_TOTAL = intPreferencesKey("retrieval_total")
         private val COMPLETED_SEQUENCING = stringSetPreferencesKey("completed_sequencing")
+
+        // Quiz Progress Keys
+        private val INFERENCE_QUIZ_SCORE = intPreferencesKey("inference_quiz_score")
+        private val INFERENCE_QUIZ_TOTAL = intPreferencesKey("inference_quiz_total")
+        private val PREDICTION_QUIZ_SCORE = intPreferencesKey("prediction_quiz_score")
+        private val PREDICTION_QUIZ_TOTAL = intPreferencesKey("prediction_quiz_total")
+        private val EXPLANATION_QUIZ_SCORE = intPreferencesKey("explanation_quiz_score")
+        private val EXPLANATION_QUIZ_TOTAL = intPreferencesKey("explanation_quiz_total")
     }
 
     // Vocabulary Progress
@@ -167,5 +175,74 @@ class ProgressRepository(private val context: Context) {
 
     fun getSequencingProgress(total: Int): Flow<SectionProgress> = completedSequencingIds.map {
         SectionProgress(it.size, total)
+    }
+
+    // Inference Quiz Progress
+    val inferenceQuizProgress: Flow<Pair<Int, Int>> = context.dataStore.data.map { prefs ->
+        Pair(prefs[INFERENCE_QUIZ_SCORE] ?: 0, prefs[INFERENCE_QUIZ_TOTAL] ?: 0)
+    }
+
+    suspend fun updateInferenceQuizScore(correct: Boolean) {
+        context.dataStore.edit { prefs ->
+            val currentScore = prefs[INFERENCE_QUIZ_SCORE] ?: 0
+            val currentTotal = prefs[INFERENCE_QUIZ_TOTAL] ?: 0
+            prefs[INFERENCE_QUIZ_TOTAL] = currentTotal + 1
+            if (correct) {
+                prefs[INFERENCE_QUIZ_SCORE] = currentScore + 1
+            }
+        }
+    }
+
+    suspend fun resetInferenceQuizScore() {
+        context.dataStore.edit { prefs ->
+            prefs[INFERENCE_QUIZ_SCORE] = 0
+            prefs[INFERENCE_QUIZ_TOTAL] = 0
+        }
+    }
+
+    // Prediction Quiz Progress
+    val predictionQuizProgress: Flow<Pair<Int, Int>> = context.dataStore.data.map { prefs ->
+        Pair(prefs[PREDICTION_QUIZ_SCORE] ?: 0, prefs[PREDICTION_QUIZ_TOTAL] ?: 0)
+    }
+
+    suspend fun updatePredictionQuizScore(correct: Boolean) {
+        context.dataStore.edit { prefs ->
+            val currentScore = prefs[PREDICTION_QUIZ_SCORE] ?: 0
+            val currentTotal = prefs[PREDICTION_QUIZ_TOTAL] ?: 0
+            prefs[PREDICTION_QUIZ_TOTAL] = currentTotal + 1
+            if (correct) {
+                prefs[PREDICTION_QUIZ_SCORE] = currentScore + 1
+            }
+        }
+    }
+
+    suspend fun resetPredictionQuizScore() {
+        context.dataStore.edit { prefs ->
+            prefs[PREDICTION_QUIZ_SCORE] = 0
+            prefs[PREDICTION_QUIZ_TOTAL] = 0
+        }
+    }
+
+    // Explanation Quiz Progress
+    val explanationQuizProgress: Flow<Pair<Int, Int>> = context.dataStore.data.map { prefs ->
+        Pair(prefs[EXPLANATION_QUIZ_SCORE] ?: 0, prefs[EXPLANATION_QUIZ_TOTAL] ?: 0)
+    }
+
+    suspend fun updateExplanationQuizScore(correct: Boolean) {
+        context.dataStore.edit { prefs ->
+            val currentScore = prefs[EXPLANATION_QUIZ_SCORE] ?: 0
+            val currentTotal = prefs[EXPLANATION_QUIZ_TOTAL] ?: 0
+            prefs[EXPLANATION_QUIZ_TOTAL] = currentTotal + 1
+            if (correct) {
+                prefs[EXPLANATION_QUIZ_SCORE] = currentScore + 1
+            }
+        }
+    }
+
+    suspend fun resetExplanationQuizScore() {
+        context.dataStore.edit { prefs ->
+            prefs[EXPLANATION_QUIZ_SCORE] = 0
+            prefs[EXPLANATION_QUIZ_TOTAL] = 0
+        }
     }
 }
